@@ -83,7 +83,7 @@ function Footer() {
       <Container maxWidth="xl" sx={{ mt: "20px", mb: "20px" }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -92,14 +92,14 @@ function Footer() {
                 // width: "50%",
               }}
               bgcolor="white"
-            >
-              <img
-                src={require("./asset/eg-logo.png")}
-                alt="social media"
-                loading="lazy"
-                width="50%"
-              />
-            </Box>
+            > */}
+            <img
+              src={require("./asset/logo.jpg")}
+              alt="social media"
+              loading="lazy"
+              width="50%"
+            />
+            {/* </Box> */}
           </Grid>
           <Grid item xs={6} md={3} sx={{ pl: "15px" }}>
             <Typography color="white" variant="h5" sx={{ fontWeight: "bold" }}>
