@@ -1,33 +1,39 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from '../routes/Home';
-import About from '../routes/About';
-import WebDesign from '../routes/WebDesign';
-import SEO from '../routes/SEO';
-import Services from '../routes/Services';
-import Layout from './Layout';
-import Frontend from '../routes/Frontend';
-import PHP from '../routes/PHP';
-import Node from '../routes/Node';
-import WebDev from '../routes/WebDev';
-import Overview from '../routes/Overview';
-import VisionandMission from '../routes/VisionandMission';
-import MilestonesandRewards from '../routes/MilestonesandRewards';
-import OurTeam from '../routes/OurTeam';
-import LegalStatusandEmpanelments from '../routes/LegalStatusandEmpanelments';
-import WhatWeDo from '../routes/WhatWeDo';
-import Projects from '../routes/Projects';
+import { Routes, Route } from "react-router-dom";
+import Home from "../routes/Home";
+import About from "../routes/About";
+import WebDesign from "../routes/WebDesign";
+import SEO from "../routes/SEO";
+import Services from "../routes/Services";
+import Layout from "./Layout";
+import Frontend from "../routes/Frontend";
+import PHP from "../routes/PHP";
+import Node from "../routes/Node";
+import WebDev from "../routes/WebDev";
+import Overview from "../routes/Overview";
+import VisionandMission from "../routes/VisionandMission";
+import MilestonesandRewards from "../routes/MilestonesandRewards";
+import OurTeam from "../routes/OurTeam";
+import LegalStatusandEmpanelments from "../routes/LegalStatusandEmpanelments";
+import WhatWeDo from "../routes/WhatWeDo";
+import Projects from "../routes/Projects";
 
-import Gallery from '../routes/Gallery';
-import ContactUs from '../routes/ContactUs';
-import Donate from '../routes/Donate';
-import Login from '../routes/Login';
-import Events from '../routes/Events';
+import Gallery from "../routes/Gallery";
+import ContactUs from "../routes/ContactUs";
+import Donate from "../routes/Donate";
+import Login from "../routes/Login";
+import Events from "../routes/Events";
+
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
 
 
 const App = () => {
-  return (
-    
+  return (    
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -55,6 +61,7 @@ const App = () => {
           
         </Route>
       </Routes>
+ 
     
   );
 };
