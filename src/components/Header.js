@@ -7,7 +7,12 @@ const Header = () => {
     <header>
       <div className="nav-area">
         <Link to="/" className="logo">
-          Logo
+        <img
+              src={require("./asset/logo.jpg")}
+              alt="social media"
+              loading="lazy"
+              width={100}
+            />
         </Link>
         <Navbar />
       </div>
