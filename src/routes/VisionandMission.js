@@ -51,9 +51,10 @@ function RowAndColumnSpacing() {
   );
 }
 
+
 function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: '100%' }}>
+    <Card sx={{ maxWidth: "100%" }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -69,14 +70,15 @@ function ActionAreaCard() {
           Who We Are
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Educate Girls works with the government, community and village-based volunteers called Team Balika to ensure every girl in the remotest parts of India is enrolled in school and learns well.
+            Educate Girls works with the government, community and village-based
+            volunteers called Team Balika to ensure every girl in the remotest
+            parts of India is enrolled in school and learns well.
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
   );
 }
-
 
 const VisionandMission = () => {
     return <div >
@@ -96,5 +98,5 @@ const VisionandMission = () => {
 
     </div>
   };
-  
-  export default VisionandMission;
+
+export default VisionandMission;
