@@ -1,0 +1,28 @@
+.project-container {
+    /* Add your container styles here */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* Adjust as needed */
+  }
+  
+  .image {
+    margin-top:20px;
+    flex: 1; /* Adjust the width of the image container */
+    margin-right: 20px; /* Adjust spacing between image and text */
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text {
+    flex: 2; /* Adjust the width of the text container */
+  }
