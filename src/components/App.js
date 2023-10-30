@@ -23,6 +23,8 @@ import Donate from '../routes/Donate';
 import Login from '../routes/Login';
 import Events from '../routes/Events';
 
+
+
 const App = () => {
   return (
     
@@ -50,6 +52,7 @@ const App = () => {
           <Route path="donate"element={<Donate />} />
           <Route path="login"element={<Login />} />
           <Route path="*" element={<p>Not found!</p>} />
+          
         </Route>
       </Routes>
     

@@ -149,4 +149,34 @@ button span {
   background-color: #f1f1f1;
   overflow: auto;
 }
+.what{
+  display: flex;
+  margin-top: 70px;
+  /* justify-content: space-evenly; */
+  margin-left: -200px;
+}
+.wedo img {
+    width: 300px;
+    height: 300px;
+}
+.content button{
+    background-color: rgb(255, 49, 49);
+    padding: 10px 10px 10px 15px ;
+    border-radius: 9px ;
+}
 
+.content p {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  line-height: 2;
+  font-family:Outfit, sans-serif;
+  font-size: 17px;
+}
+.content h1{
+  color: #222222;
+  /* line-height: 50px; */
+  size: 45px;
+  font-family: 'Fredoka One',sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
