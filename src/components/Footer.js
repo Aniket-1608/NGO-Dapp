@@ -78,7 +78,7 @@ function Footer() {
       maxWidth="false"
       //   bgcolor="black"
       bgcolor="#212529"
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      //   sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
     >
       <Container maxWidth="xl" sx={{ mt: "20px", mb: "20px" }}>
         <Grid container spacing={4}>
@@ -159,6 +159,7 @@ function Footer() {
                 id="filled-basic"
                 label="First Name"
                 variant="filled"
+                fullWidth
                 InputLabelProps={{
                   style: { color: "#6b6b6b" }, // Change the label color
                 }}
@@ -169,6 +170,7 @@ function Footer() {
                 id="filled-basic"
                 label="Last Name"
                 variant="filled"
+                fullWidth
                 InputLabelProps={{
                   style: { color: "#6b6b6b" }, // Change the label color
                 }}
@@ -179,6 +181,7 @@ function Footer() {
                 id="filled-basic"
                 label="Enter your email here"
                 variant="filled"
+                fullWidth
                 InputLabelProps={{
                   style: { color: "#6b6b6b" }, // Change the label color
                 }}
