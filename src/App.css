@@ -147,8 +147,8 @@ button span {
 .what{
   display: flex;
   margin-top: 70px;
-  /* justify-content: space-evenly; */
-  margin-left: -200px;
+  justify-content: space-evenly;
+  margin-left: 100px;
 }
 .wedo img {
     width: 300px;
