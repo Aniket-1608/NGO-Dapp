@@ -1,5 +1,7 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
+import Test from "./LegelStatus";
+import Test1 from "./Reports";
 export default function Home() {
     const sliderImages = [
         {
@@ -21,6 +23,8 @@ export default function Home() {
             url: "https://rockwell.co.in/wp-content/uploads/2019/10/download.jpeg"
         },
     ];
+    
+    
     return (
         <div>
             <h3> {" "}
@@ -31,7 +35,7 @@ export default function Home() {
                 images={sliderImages}
 
                 showNavs={true}/>
-            <div className="what" >
+            {/* <div className="what" >
                 <div className="con">
                     <h1>What We Do</h1>
                     <p>Educate Girls works with the government, community and village-based volunteers<br/>
@@ -44,7 +48,11 @@ export default function Home() {
                 <div className="wedo">
                     <img src="https://www.educategirls.ngo/wp-content/themes/egindia/static/images/img-1.jpg"/>
                 </div>
-            </div>
+            </div> */}
+            <Test/>
+            <Test1/>
+            
+
         </div>
     );
 }

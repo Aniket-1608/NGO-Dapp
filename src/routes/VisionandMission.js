@@ -54,7 +54,7 @@ function RowAndColumnSpacing() {
 
 function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: "100%" }}>
+    <Card sx={{ maxWidth: "100%", }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -66,7 +66,7 @@ function ActionAreaCard() {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h3" component="div">
+          <Typography sx={{fontFamily:['Fredoka One','sans-serif']}} gutterBottom variant="h3" component="div">
           Who We Are
           </Typography>
           <Typography variant="body2" color="text.secondary">
