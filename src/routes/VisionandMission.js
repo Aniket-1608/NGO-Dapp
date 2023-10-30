@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
 function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: '100%' }}>
+    <Card sx={{ maxWidth: "100%" }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -17,10 +17,12 @@ function ActionAreaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-          Who We Are
+            Who We Are
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Educate Girls works with the government, community and village-based volunteers called Team Balika to ensure every girl in the remotest parts of India is enrolled in school and learns well.
+            Educate Girls works with the government, community and village-based
+            volunteers called Team Balika to ensure every girl in the remotest
+            parts of India is enrolled in school and learns well.
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -28,13 +30,8 @@ function ActionAreaCard() {
   );
 }
 
-
 const VisionandMission = () => {
-    return <div >
-      {/* <h2>Vision & Mission</h2>; */}
-      <ActionAreaCard/>
+  return <ActionAreaCard />;
+};
 
-    </div>
-  };
-  
-  export default VisionandMission;
+export default VisionandMission;
