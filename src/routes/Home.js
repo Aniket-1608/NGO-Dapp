@@ -32,7 +32,7 @@ export default function Home() {
 
                 showNavs={true}/>
             <div className="what" >
-                <div className="content">
+                <div className="con">
                     <h1>What We Do</h1>
                     <p>Educate Girls works with the government, community and village-based volunteers<br/>
                         called Team Balika to ensure every girl in the remotest parts of India is enrolled in<br/>
