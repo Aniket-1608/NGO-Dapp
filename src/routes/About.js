@@ -18,6 +18,31 @@ import {
   Divider,
   TextField,
 } from "@mui/material";
+import { CardActionArea } from '@mui/material';
+
+function ActionAreaCard({img,name}) {
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={img}
+          alt={name}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+          {/* <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography> */}
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
 
 function CardWithImage({head,body,img}) {
   const theme = useTheme();
@@ -111,53 +136,12 @@ const About = () => {
       </Box>
       <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
 
-<Box sx={{ margin: '2px' }}>
-    <CardMedia
-    component="img"
-    sx={{ width: 250 ,height:250, borderRadius:5}}
-    // sx={{ width: 251 }}
-    image={require("../components/asset/Alahuddin_Ali.png")}
-    alt={"legal-status-and-empanelments"}
-  />
-  <Typography component="div" variant="h6">
-  Alahuddin Ali
-  </Typography>
-</Box>
-<Box sx={{ margin: '2px' }}>
-    <CardMedia
-    component="img"
-    sx={{ width: 250 ,height:250, borderRadius:5}}
-    image={require("../components/asset/Shraddha_Salve.jpeg")}
-    alt={"legal-status-and-empanelments"}
-  />
-  <Typography component="div" variant="h6">
-  Shraddha Salve
-  </Typography>
-</Box>
-<Box sx={{ margin: '2px' }}>
-    <CardMedia
-    component="img"
-    sx={{ width: 250 ,height:250, borderRadius:5}}
-    // sx={{ width: 251 }}
-    image={require("../components/asset/Yashika_Kothari.jpg")}
-    alt={"legal-status-and-empanelments"}
-  />
-  <Typography component="div" variant="h6">
-  Yashika Kothari
-  </Typography>
-</Box>
-<Box sx={{ margin: '2px' }}>
-    <CardMedia
-    component="img"
-    sx={{ width: 250 ,height:250, borderRadius:5}}
-    // sx={{ width: 251 }}
-    image={require("../components/asset/Adfar_Rashid.jpeg")}
-    alt={"legal-status-and-empanelments"}
-  />
-  <Typography component="div" variant="h6">
-  Adfar Rashid
-  </Typography>
-</Box>
+
+<ActionAreaCard img={require("../components/asset/Shraddha_Salve.jpeg")} name="Shraddha Salve" />
+<ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")} name="Yashika Kothari" />
+<ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")} name="Adfar Rashid" />
+<ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")} name="Alahuddin Ali" />
+
 </Box>
     </Card>
     </div>
