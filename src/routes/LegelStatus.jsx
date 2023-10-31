@@ -12,9 +12,9 @@ function createData(Name, RegNo,) {
 }
 
 const rows = [
-  createData('1) aaa', 111,  ),
+  createData('1) Name', 'Kumar Abab',  ),
   createData('2) Public Trust Act, 1950','E-7269 (24/09/2015)' ),
-  createData('3) PAN Card', 333, ),
+  createData('3) PAN Card', 'CSR00000374', ),
   createData('4) Income Tax Exemption','12AA 664/242/2015-16 80G 6974/228/2016-17', ),
   createData('5) Foreign contribution','FCRA No.- 083930725'),
   createData('6) Goods and Service Tax (GST)','FCRA No.- 083930725'),

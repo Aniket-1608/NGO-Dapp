@@ -1,7 +1,5 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-import Test from "./LegelStatus";
-import Test1 from "./Reports";
 export default function Home() {
     const sliderImages = [
         {
@@ -26,15 +24,20 @@ export default function Home() {
     
     
     return (
-        <div>
-            <h3> {" "}
-                Creating the image slider using the react-simple-image-slider
-            </h3>
-            <SimpleImageSlider width={1000}
+        <div 
+        style={{display:"flex",justifyContent:"center",alignItems:"center"}}
+        >
+            <div style={{margin:10}}>
+            <SimpleImageSlider width={800}
                 height={500}
                 images={sliderImages}
-
+                slideDuration={3}
+                loop={true}
+                autoPlay={true}
                 showNavs={true}/>
+
+            </div>
+            
             {/* <div className="what" >
                 <div className="con">
                     <h1>What We Do</h1>
@@ -49,8 +52,6 @@ export default function Home() {
                     <img src="https://www.educategirls.ngo/wp-content/themes/egindia/static/images/img-1.jpg"/>
                 </div>
             </div> */}
-            <Test/>
-            <Test1/>
             
 
         </div>
