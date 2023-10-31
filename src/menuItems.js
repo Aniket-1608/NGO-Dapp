@@ -9,23 +9,23 @@ export const menuItems = [
         submenu: [
           {
             title: 'Overview',
-            url: 'overview',
+            url: '#overview',
           },
           {
             title: 'Vision and Mission',
-            url: 'vision-and-mission',
+            url: '#vision-and-mission',
           },
           {
             title: 'Milestones and Rewards',
-            url: 'milestones-and-rewards',
+            url: '#milestones-and-rewards',
           },
           {
             title: 'Our Team',
-            url:'our-team'
+            url:'#our-team'
           },
           {
             title:'Legal Status & Empanelments',
-            url:'legal-status-and-empanelments'
+            url:'#legal-status-and-empanelments'
           },
         ],
       },
