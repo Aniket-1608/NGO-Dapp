@@ -59,7 +59,7 @@ const About = () => {
         <Route path="overview" element={<Overview />} />
       </Routes> */}
       {/* <img src={require("../components/asset/visionimg.webp")} width={'90%'} height={250} /> */}
-     <div id='overview'>  
+     <div id='overview' style={{width:'100%'}}>  
      <CardWithImage 
       head="Overview" 
       
@@ -82,7 +82,7 @@ const About = () => {
       </div>
 
       
-      <div id='our-team'>
+      <div id='our-team' style={{width:'100%'}}>
 
     <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
       <Box sx={{ display: 'flex', flexDirection: 'column',padding:'20px',width:800 }}>
@@ -161,10 +161,10 @@ const About = () => {
 </Box>
     </Card>
     </div>
-    <div id='legal-status-and-empanelments'>
+    <div id='legal-status-and-empanelments' style={{width:'100%'}}>
     <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <CardContent sx={{ flex: '1 0 auto' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',width:'100%' }}>
+      <CardContent sx={{ flex: '1 0 auto',width:'100%' }}>
           <Typography component="div" variant="h5">
           Legal Status And Empanelments
           </Typography>
@@ -176,12 +176,15 @@ const About = () => {
          <LegalStatusTable/>
         </CardContent>
       </Box>
+      <Box>
+
       <CardMedia
         component="img"
-        sx={{ width: 600 }}
+        sx={{ maxWidth: 600,width:'60%' }}
         image={require("../components/asset/legal.jpg")}
         alt={"legal-status-and-empanelments"}
       />
+      </Box>
     </Card>
     </div>
     </div>

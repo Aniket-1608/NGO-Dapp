@@ -25,7 +25,7 @@ const rows = [
 export default function LegelStatus() {
   return (
     <TableContainer >
-      <Table sx={{ width: '1000px', border:'1px solid black', marginTop:'90px', marginLeft:5 }} aria-label="simple table">
+      <Table sx={{ maxWidth:800,width: '50%', border:'1px solid black', marginTop:'90px', marginLeft:5 }} aria-label="simple table">
         <TableHead>
           <TableRow sx={{ ' td,  th': { border: 1, borderTop:1 } }}  >
             <TableCell>Name</TableCell>
