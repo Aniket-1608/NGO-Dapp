@@ -19,6 +19,18 @@ import {
   TextField,
 } from "@mui/material";
 import { CardActionArea } from '@mui/material';
+import Paper from '@mui/material/Paper';
+
+const milestones = [
+  require('../components/asset/partners/APCO-Worldwide.jpg'),
+  require('../components/asset/partners/Adobe.jpg'),
+  require('../components/asset/partners/Bank-of-America.png'),
+  require('../components/asset/partners/Bohemian-Foundation.jpg'),
+  require('../components/asset/partners/Goldman-Sachs.jpg'),
+  require('../components/asset/partners/HDB.jpg'),
+  require('../components/asset/partners/Oracle.png'),
+  require('../components/asset/partners/accenture.jpg'),
+]
 
 function ActionAreaCard({img,name}) {
   return (
@@ -106,6 +118,47 @@ const About = () => {
       img={require("../components/asset/vision.jpg")} />
       </div>
 
+
+      <div id='milestones-and-rewards' >
+
+
+      <Typography component="div" variant="h4">
+          Milestones and Rewards
+      </Typography>
+      <Divider
+          variant="string"
+          sx={{ mt: "5px", pt: "5px", width: "90px", borderRadius: "5px" }}
+          color="#ff0000"
+        />
+
+      <Typography component="div" variant="h5">
+          Partners
+      </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent:"space-around",
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 128,
+          height: 128,
+        },
+      }}
+    >
+      {
+      milestones.map(milestone=>{
+        return <Paper elevation={13} >
+            <img src={milestone} style={{width:128}}/>
+            </Paper>
+      })
+      }
+    </Box>
+
+      <Typography component="div" variant="h5">
+          Recognition
+      </Typography>
+      </div>
       
       <div id='our-team' style={{width:'100%'}}>
 
@@ -135,14 +188,11 @@ const About = () => {
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
-
-
-<ActionAreaCard img={require("../components/asset/Shraddha_Salve.jpeg")} name="Shraddha Salve" />
-<ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")} name="Yashika Kothari" />
-<ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")} name="Adfar Rashid" />
-<ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")} name="Alahuddin Ali" />
-
-</Box>
+        <ActionAreaCard img={require("../components/asset/Shraddha_Salve.jpeg")} name="Shraddha Salve" />
+        <ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")} name="Yashika Kothari" />
+        <ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")} name="Adfar Rashid" />
+        <ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")} name="Alahuddin Ali" />
+      </Box>
     </Card>
     </div>
     <div id='legal-status-and-empanelments' style={{width:'100%'}}>
@@ -161,7 +211,6 @@ const About = () => {
         </CardContent>
       </Box>
       <Box>
-
       <CardMedia
         component="img"
         sx={{ maxWidth: 600,width:'60%' }}

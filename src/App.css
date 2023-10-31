@@ -7,7 +7,14 @@
 body {
   font-family: sans-serif;
 }
-
+/* body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  margin-top: auto;
+} */
 header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: #212529;
@@ -176,3 +183,10 @@ button span {
   font-style: normal;
 }
 
+#milestones-and-rewards{
+  background-color: #e5e5e5;
+  width: 90%;
+  margin-right: 5%;
+  height: 600px;
+  padding: 10px;
+}
