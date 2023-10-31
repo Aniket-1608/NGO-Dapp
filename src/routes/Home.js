@@ -38,12 +38,10 @@ export default function Home() {
 
             </div>
             
-            {/* <div className="what" >
+            <div className="what" >
                 <div className="con">
                     <h1>What We Do</h1>
-                    <p>Educate Girls works with the government, community and village-based volunteers<br/>
-                        called Team Balika to ensure every girl in the remotest parts of India is enrolled in<br/>
-                        school and learns well.</p>
+                    <p>We as a team at Rajiv Gandhi Institute of Technology are studying in our final year. Our team focused its interventions on issues concerning youth and children which brought about significant changes in their lives in terms of education, health, skill, career and sustainable livelihood. Our team also works on Environment conservation, women empowerment, Food safety and security, . Being an organisation who cares for society, our team gets engaged in projects as the situation demands under natural or manmade disasters, like COVID-19 Pandemic, Flood, Drought Relief etc social media.</p>
                     <button><i className="fa-solid fa-heart" style={{color:'#ffff'}}></i>Yes! I want to help
                     </button>
                 </div>
@@ -51,7 +49,7 @@ export default function Home() {
                 <div className="wedo">
                     <img src="https://www.educategirls.ngo/wp-content/themes/egindia/static/images/img-1.jpg"/>
                 </div>
-            </div> */}
+            </div>
             
 
         </div>

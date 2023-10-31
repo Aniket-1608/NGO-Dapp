@@ -65,7 +65,7 @@ const About = () => {
       
       
       
-      body={"          We as a team at Rajiv Gandhi Institute of Technology are studying in our final year. Our team focused its interventions on issues concerning youth and children which brought about significant changes in their lives in terms of education, health, skill, career and sustainable livelihood. Our team also works on Environment conservation, women empowerment, Food safety and security, . Being an organisation who cares for society, our team gets engaged in projects as the situation demands under natural or manmade disasters, like COVID-19 Pandemic, Flood, Drought Relief etc social media"} 
+      body={"We as a team at Rajiv Gandhi Institute of Technology are studying in our final year. Our team focused its interventions on issues concerning youth and children which brought about significant changes in their lives in terms of education, health, skill, career and sustainable livelihood. Our team also works on Environment conservation, women empowerment, Food safety and security, . Being an organisation who cares for society, our team gets engaged in projects as the situation demands under natural or manmade disasters, like COVID-19 Pandemic, Flood, Drought Relief etc social media"} 
       img={require("../components/asset/overview.png")} />
 
      </div>
@@ -84,61 +84,81 @@ const About = () => {
       
       <div id='our-team'>
 
-      <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
-      <Box sx={{ display: 'flex', flexDirection: 'column',width:'100%'  }}>
-      <CardContent sx={{ flex: '1 0 auto',width:'100%' }}>
+    <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',padding:'20px' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
           Our Team
+
           </Typography>
           <Divider
               variant="string"
               sx={{ mt: "5px", pt: "5px", width: "90px", borderRadius: "5px" }}
               color="#ff0000"
             />
-         {/* <LegalStatusTable/> */}
-         <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around"}}>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+            <ol>
+            <li>
+          "Alone we can do so little; together we can do so much." — Helen Keller
+            </li>
+            <li>
+            "Teamwork makes the dream work." — John C. Maxwell
+            </li>
+            </ol>
 
-          <Box sx={{ margin: '2px' }}>
-              <CardMedia
-              component="img"
-              // sx={{ width: 251 }}
-              image={require("../components/asset/alexa.jpg")}
-              alt={"legal-status-and-empanelments"}
-            />
-            <Typography component="div" variant="h5">
-            Anushree Singh
-            </Typography>
-            Head - Human Resources
-          </Box>
-          <Box sx={{ margin: '2px' }}>
-              <CardMedia
-              component="img"
-              // sx={{ width: 251 }}
-              image={require("../components/asset/alexa.jpg")}
-              alt={"legal-status-and-empanelments"}
-            />
-            <Typography component="div" variant="h5">
-            Lisa Rodricks
-            </Typography>
-            Director - Strategy
-          </Box>
-          <Box sx={{ margin: '2px' }}>
-              <CardMedia
-              component="img"
-              // sx={{ width: 251 }}
-              image={require("../components/asset/alexa.jpg")}
-              alt={"legal-status-and-empanelments"}
-            />
-            <Typography component="div" variant="h5">
-            Vijaylakshmi Saxena
-            </Typography>
-            Chief Financial Officer (CFO)
-          </Box>
-         </Box>
-         
+          </Typography>
         </CardContent>
       </Box>
-      
+      <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around"}}>
+
+<Box sx={{ margin: '2px' }}>
+    <CardMedia
+    component="img"
+    sx={{ width: 250 ,height:250, borderRadius:5}}
+    // sx={{ width: 251 }}
+    image={require("../components/asset/Alahuddin_Ali.png")}
+    alt={"legal-status-and-empanelments"}
+  />
+  <Typography component="div" variant="h5">
+  Alahuddin Ali
+  </Typography>
+</Box>
+<Box sx={{ margin: '2px' }}>
+    <CardMedia
+    component="img"
+    sx={{ width: 250 ,height:250, borderRadius:5}}
+    image={require("../components/asset/Shraddha_Salve.jpeg")}
+    alt={"legal-status-and-empanelments"}
+  />
+  <Typography component="div" variant="h5">
+  Shraddha Salve
+  </Typography>
+</Box>
+<Box sx={{ margin: '2px' }}>
+    <CardMedia
+    component="img"
+    sx={{ width: 250 ,height:250, borderRadius:5}}
+    // sx={{ width: 251 }}
+    image={require("../components/asset/Yashika_Kothari.jpg")}
+    alt={"legal-status-and-empanelments"}
+  />
+  <Typography component="div" variant="h5">
+  Yashika Kothari
+  </Typography>
+</Box>
+<Box sx={{ margin: '2px' }}>
+    <CardMedia
+    component="img"
+    sx={{ width: 250 ,height:250, borderRadius:5}}
+    // sx={{ width: 251 }}
+    image={require("../components/asset/Adfar_Rashid.jpeg")}
+    alt={"legal-status-and-empanelments"}
+  />
+  <Typography component="div" variant="h5">
+  Adfar Rashid
+  </Typography>
+</Box>
+</Box>
     </Card>
     </div>
     <div id='legal-status-and-empanelments'>
