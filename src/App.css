@@ -6,6 +6,8 @@
 
 body {
   font-family: sans-serif;
+  background-color: rgb(66, 230, 255);
+  /* color: white; */
 }
 /* body{
   min-height: 100vh;
@@ -187,6 +189,6 @@ button span {
   background-color: #e5e5e5;
   width: 90%;
   margin-right: 5%;
-  height: 600px;
+  /* height: 800px; */
   padding: 10px;
 }
