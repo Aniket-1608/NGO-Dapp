@@ -85,7 +85,7 @@ const About = () => {
       <div id='our-team'>
 
     <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
-      <Box sx={{ display: 'flex', flexDirection: 'column',padding:'20px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',padding:'20px',width:800 }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
           Our Team
@@ -109,7 +109,7 @@ const About = () => {
           </Typography>
         </CardContent>
       </Box>
-      <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around"}}>
+      <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
 
 <Box sx={{ margin: '2px' }}>
     <CardMedia
@@ -119,7 +119,7 @@ const About = () => {
     image={require("../components/asset/Alahuddin_Ali.png")}
     alt={"legal-status-and-empanelments"}
   />
-  <Typography component="div" variant="h5">
+  <Typography component="div" variant="h6">
   Alahuddin Ali
   </Typography>
 </Box>
@@ -130,7 +130,7 @@ const About = () => {
     image={require("../components/asset/Shraddha_Salve.jpeg")}
     alt={"legal-status-and-empanelments"}
   />
-  <Typography component="div" variant="h5">
+  <Typography component="div" variant="h6">
   Shraddha Salve
   </Typography>
 </Box>
@@ -142,7 +142,7 @@ const About = () => {
     image={require("../components/asset/Yashika_Kothari.jpg")}
     alt={"legal-status-and-empanelments"}
   />
-  <Typography component="div" variant="h5">
+  <Typography component="div" variant="h6">
   Yashika Kothari
   </Typography>
 </Box>
@@ -154,7 +154,7 @@ const About = () => {
     image={require("../components/asset/Adfar_Rashid.jpeg")}
     alt={"legal-status-and-empanelments"}
   />
-  <Typography component="div" variant="h5">
+  <Typography component="div" variant="h6">
   Adfar Rashid
   </Typography>
 </Box>
@@ -178,7 +178,7 @@ const About = () => {
       </Box>
       <CardMedia
         component="img"
-        // sx={{ width: 151 }}
+        sx={{ width: 600 }}
         image={require("../components/asset/legal.jpg")}
         alt={"legal-status-and-empanelments"}
       />
