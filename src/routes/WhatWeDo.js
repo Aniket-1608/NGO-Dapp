@@ -1,3 +1,16 @@
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import LegalStatusTable from "./LegelStatus";
+
+import Typography from '@mui/material/Typography';
+import {Divider} from "@mui/material";
+import Report from "./Reports";
+
+
 const WhatWeDo = () => {
     const style = {
       fontSize: "40px",
@@ -7,43 +20,17 @@ const WhatWeDo = () => {
   
     return (
       <div>
-        <section id="background" className="inn-page-bg">
-            <div className="container">
-                <div className="row">
-                    <div className="inn-pag-ban text-center">
-                        <h2 style={style}>What We Do</h2>
-                        <span className="link text-center">
-                            <a href="https://y4d.ngo/home">Home</a> <span> &gt; What we do</span>
-                        </span>
-                        <div className="sec-title colored" style={{ paddingTop: 15 }}>
-                            <span className="decor">
-                            <span className="inner" />
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section className="com-padd com-padd-redu-bot1 pad-bot-red-40 pt-75">
-  <div className="container">
-    <div className="row">
-      <div
-        className="com-title"
-        style={{ marginBottom: 20, paddingTop: 15 }}
-        id="ld-abour"
-      >
-        <h2>
-          <span className="style-left" />
-          What We Do?
-          <span className="style-right" />
-        </h2>
-      </div>
-      <div className="home-list-pop list-spac">
-        <div className="list-pg-inn-sp list-360">
-          <div className="row">
-            <div className="col-md-12 home-list-pop-desc inn-list-pop-desc">
-              <p>
+      <Card sx={{width:"90%",margin:5}}>
+      <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h5">
+          What We Do
+          </Typography>
+          <Divider
+              variant="string"
+              sx={{ mt: "5px", pt: "5px", width: "90px", borderRadius: "5px" }}
+              color="#ff0000"
+            />
+          <Typography variant="subtitle1" color="text.secondary" component="div">
                 We are the proud students of Rajiv Gandhi Institute Of Technology.
                 Here our motto is to build  a Blockchain based NGO management Application in which we 
                 will collect donations from various organizations , individuals , 
@@ -57,15 +44,34 @@ const WhatWeDo = () => {
                 Our NGO will visit orphanage and provide snacks  and books for children .And our motto is to combine Old age homes with orphanage so that children will get experience from elderly people and elderly people will get affection from children.
                 Thus we are  building a society better place for living of
                 future generation.
-              </p>
-            </div>
-          </div>
-        </div>
+          </Typography>
+        </CardContent>
+      </Card>
+    
+      
+    <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h5">
+          Reports
+          </Typography>
+          <Divider
+              variant="string"
+              sx={{ mt: "5px", pt: "5px", width: "90px", borderRadius: "5px" }}
+              color="#ff0000"
+            />
+            <Report/>
+        </CardContent>
+      </Box>
+
+       <CardMedia
+        component="img"
+        // sx={{ width: 151 }}
+        image={require("../components/asset/status-report.png")}
+        alt={"legal-status-and-empanelments"}
+      />
+    </Card>
       </div>
-    </div>
-  </div>
-</section>
-      </div>  
     );
   };
   
