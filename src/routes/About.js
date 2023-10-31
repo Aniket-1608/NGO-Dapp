@@ -31,7 +31,14 @@ const milestones = [
   require('../components/asset/partners/Oracle.png'),
   require('../components/asset/partners/accenture.jpg'),
 ]
+const rewards = [
+  require('../components/asset/awards/Global-Giving-Award_2020.jpg'),
+  require('../components/asset/awards/Millenium-Alliance-2014.jpg'),
+  require('../components/asset/awards/Stars-impact-award-winner_.jpg'),
+  require('../components/asset/awards/The-british-asian-trust1.jpg'),
+  require('../components/asset/awards/iVolunteer-Awards.jpg'),
 
+]
 function ActionAreaCard({img,name}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -131,7 +138,7 @@ const About = () => {
           color="#ff0000"
         />
 
-      <Typography component="div" variant="h5">
+      <Typography component="div" variant="h5" align='center'>
           Partners
       </Typography>
     <Box
@@ -141,23 +148,45 @@ const About = () => {
         flexWrap: 'wrap',
         '& > :not(style)': {
           m: 1,
-          width: 128,
-          height: 128,
+          width: 150,
+          height: 150,
         },
       }}
     >
       {
       milestones.map(milestone=>{
         return <Paper elevation={13} >
-            <img src={milestone} style={{width:128}}/>
+            <img src={milestone} style={{width:150}}/>
             </Paper>
       })
       }
     </Box>
 
-      <Typography component="div" variant="h5">
+      <Typography component="div" variant="h5" align='center'
+      sx={{marginTop:'50px'}}
+      >
           Recognition
       </Typography>
+      <Box
+      sx={{
+        display: 'flex',
+        justifyContent:"space-around",
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 200,
+          height: 200,
+        },
+      }}
+    >
+      {
+      rewards.map(reward=>{
+        return <Paper elevation={13} >
+            <img src={reward} style={{width:200}}/>
+            </Paper>
+      })
+      }
+    </Box>
       </div>
       
       <div id='our-team' style={{width:'100%'}}>
