@@ -42,6 +42,7 @@ const rewards = [
 function ActionAreaCard({img,name}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
+      <Paper elevation={24} sx={{ backgroundColor:"#e5e5e5"}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -59,6 +60,7 @@ function ActionAreaCard({img,name}) {
           </Typography> */}
         </CardContent>
       </CardActionArea>
+      </Paper>
     </Card>
   );
 }
@@ -187,43 +189,20 @@ const About = () => {
       })
       }
     </Box>
-      </div>
-      
-      <div id='our-team' style={{width:'100%'}}>
-
-    <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
-      <Box sx={{ display: 'flex', flexDirection: 'column',padding:'20px',width:800 }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-          Our Team
-
-          </Typography>
-          <Divider
-              variant="string"
-              sx={{ mt: "5px", pt: "5px", width: "90px", borderRadius: "5px" }}
-              color="#ff0000"
-            />
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            <ol>
-            <li>
-          "Alone we can do so little; together we can do so much." — Helen Keller
-            </li>
-            <li>
-            "Teamwork makes the dream work." — John C. Maxwell
-            </li>
-            </ol>
-
-          </Typography>
-        </CardContent>
-      </Box>
+    <div id='our-team' style={{width:'100%',margin:'30px 0px'}}>
+      <Typography component="div" variant="h5" align='center'>
+        Our Team
+      </Typography>
       <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
-        <ActionAreaCard img={require("../components/asset/Shraddha_Salve.jpeg")} name="Shraddha Salve" />
+        <ActionAreaCard img={require("../components/asset/Shraddha_Salve.png")} name="Shraddha Salve" />
         <ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")} name="Yashika Kothari" />
         <ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")} name="Adfar Rashid" />
         <ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")} name="Alahuddin Ali" />
       </Box>
-    </Card>
-    </div>
+      </div>
+      </div>
+      
+     
     <div id='legal-status-and-empanelments' style={{width:'100%'}}>
     <Card sx={{ display: 'flex' ,margin:5,width:"90%"}}>
       <Box sx={{ display: 'flex', flexDirection: 'column',width:'100%' }}>
