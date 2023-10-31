@@ -74,11 +74,12 @@ const menu = {
 
 function Footer() {
   return (
+    <footer>
     <Box
       maxWidth="false"
       //   bgcolor="black"
       bgcolor="#212529"
-      //   sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        sx={{ position: "relative", bottom: 0, left: 0, right: 0 }}
     >
       <Container maxWidth="xl" sx={{ mt: "20px", mb: "20px" }}>
         <Grid container spacing={4}>
@@ -203,7 +204,7 @@ function Footer() {
           >
             Follow Us
           </Typography>
-          <a href="https://www.facebook.com/educategirls" target="_blank">
+          {/* <a href="https://www.facebook.com/educategirls" target="_blank"> */}
             <img
               src="https://www.educategirls.ngo/wp-content/themes/egindia/static/icons/icon-facebook.png"
               alt="social media"
@@ -211,8 +212,8 @@ function Footer() {
               width="50px"
               style={{ marginRight: "10px" }}
             />
-          </a>
-          <a href="https://twitter.com/educate_girls" target="_blank">
+          {/* </a> */}
+          {/* <a href="https://twitter.com/educate_girls" target="_blank"> */}
             <img
               src="https://www.educategirls.ngo/wp-content/themes/egindia/static/icons/icon-twitter.png"
               alt="social media"
@@ -220,8 +221,8 @@ function Footer() {
               width="50px"
               style={{ marginRight: "10px" }}
             />
-          </a>
-          <a href="https://www.youtube.com/user/educategirlsEG" target="_blank">
+          {/* </a> */}
+          {/* <a href="https://www.youtube.com/user/educategirlsEG" target="_blank"> */}
             <img
               src="https://www.educategirls.ngo/wp-content/themes/egindia/static/icons/icon-youtube.png"
               alt="social media"
@@ -229,11 +230,11 @@ function Footer() {
               width="50px"
               style={{ marginRight: "10px" }}
             />
-          </a>
-          <a
+          {/* </a> */}
+          {/* <a
             href="https://www.instagram.com/educategirlsngo/?theme=dark"
             target="_blank"
-          >
+          > */}
             <img
               src="https://www.educategirls.ngo/wp-content/themes/egindia/static/icons/icon-instagram.png"
               alt="social media"
@@ -241,11 +242,11 @@ function Footer() {
               width="50px"
               style={{ marginRight: "10px" }}
             />
-          </a>
-          <a
+          {/* </a> */}
+          {/* <a
             href="https://www.linkedin.com/company/educate-girls/"
             target="_blank"
-          >
+          > */}
             <img
               src="https://www.educategirls.ngo/wp-content/themes/egindia/static/icons/icon-linkedin.png"
               alt="social media"
@@ -253,10 +254,10 @@ function Footer() {
               width="50px"
               style={{ marginRight: "10px" }}
             />
-          </a>
+          {/* </a> */}
         </Box>
       </Container>
-    </Box>
+    </Box></footer>
   );
 }
 
