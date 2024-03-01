@@ -39,7 +39,7 @@ const rewards = [
   require('../components/asset/awards/iVolunteer-Awards.jpg'),
 
 ]
-function ActionAreaCard({img,name}) {
+function ActionAreaCard({img,name,division,batch,rollno,year}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <Paper elevation={24} sx={{ backgroundColor:"#e5e5e5"}}>
@@ -54,10 +54,19 @@ function ActionAreaCard({img,name}) {
           <Typography gutterBottom variant="h5" component="div">
             {name}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
+          <Typography variant="body2" color="text.secondary">
+            Division:- {division}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Batch:- {batch}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Roll No:-{rollno}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Year:-{year}
+          </Typography>
+
         </CardContent>
       </CardActionArea>
       </Paper>
@@ -194,10 +203,31 @@ const About = () => {
         Our Team
       </Typography>
       <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
-        <ActionAreaCard img={require("../components/asset/Shraddha_Salve.png")} name="Shraddha Salve" />
-        <ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")} name="Yashika Kothari" />
-        <ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")} name="Adfar Rashid" />
-        <ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")} name="Alahuddin Ali" />
+      <ActionAreaCard 
+        img={require("../components/asset/Shraddha_Salve.png")} 
+        division="A"
+        batch="A4"
+        rollno="A762"
+        year="2023-2024"
+        name="Shraddha Salve" />
+        <ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")}
+        division="A"
+        batch="B1"
+        rollno="B707"
+        year="2023-2024"
+         name="Yashika Kothari" />
+        <ActionAreaCard img={require("../components/asset/Adfar_Rashid.jpeg")}
+        division="A"
+        batch="A1"
+        rollno="A701"
+        year="2023-2024"
+         name="Adfar Rashid" />
+        <ActionAreaCard img={require("../components/asset/Alahuddin_Ali.png")}
+        division="A"
+        batch="A1"
+        rollno="A704"
+        year="2023-2024"
+         name="Alahuddin Ali" />
       </Box>
       </div>
       </div>
