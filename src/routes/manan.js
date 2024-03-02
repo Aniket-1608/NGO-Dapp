@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
-import contractAbi  from '../components/MyABI.json';
+// import contractAbi  from '../components/MyABI.json';
 import { Component } from 'react'
 import props from 'prop-types';
 //import contractAbi  from '../components/MyABI.json';
@@ -18,9 +18,9 @@ const loadBlockchainData = async () =>  {
     console.log("Hey network is:",network)
  //   const accounts = await web3.eth.getAccounts()
     const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
-    const contract = new web3.eth.Contract(contractAbi, contractAddress);
+    // const contract = new web3.eth.Contract(contractAbi, contractAddress);
   //  console.log("account",accounts[0])
-    contract.methods.getValue().call()
+    // contract.methods.getValue().call()
     //.then(value => console.log(`The value is ${value}`)).catch(error => console.error(error));
 }
 /*
@@ -46,7 +46,7 @@ const asyncFunc = async () => {
 const ContactUs = () => {
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:80');
   const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
-  const contractInstance = new web3.eth.Contract(contractAbi, contractAddress );
+//   const contractInstance = new web3.eth.Contract(contractAbi, contractAddress );
 const handleContactClick_1 = async () => {  
   try{
     //let promise = new Promise((resolve, reject) => {
@@ -58,8 +58,8 @@ const handleContactClick_1 = async () => {
   //alert(result);
     alert('I reached here');
     console.log('Hello');
-    const result = await contractInstance.methods.ContactUs().send({ from : '0x7cE38a157E3FF7DD562E31D3a8D21B656d67cce8'}).on
-    alert('Contact is saved successfully'+ result);
+    // const result = await contractInstance.methods.ContactUs().send({ from : '0x7cE38a157E3FF7DD562E31D3a8D21B656d67cce8'}).on
+    // alert('Contact is saved successfully'+ result);
     console.log('my console log');
   } catch (error) {
     console.error(error);
@@ -70,8 +70,8 @@ const handleContactClick_1 = async () => {
     try{
       alert('I reached here');
       console.log('Hello');
-      const result = await contractInstance.methods.ContactUs().send({ from : '0x7cE38a157E3FF7DD562E31D3a8D21B656d67cce8'});
-      console.log(result);
+    //   const result = await contractInstance.methods.ContactUs().send({ from : '0x7cE38a157E3FF7DD562E31D3a8D21B656d67cce8'});
+    //   console.log(result);
     } catch (error) {
       console.error(error);
     }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Web3 from 'web3';
-import contractAbi from '../components/MyABI.json';
+import * as ethers from 'ethers';
+import ContractABI from '../artifacts/contracts/contact.sol/ContactABI.json'
+
 import {
   TextField,
   Box,
@@ -9,88 +10,121 @@ import {
   Button,
 } from "@mui/material";
 
+// console.log(Array.isArray(abi));
 const ContactUs = () => {
-  // State to manage user input
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
     email: '',
     subject: null,
+    numericSubject: -1,
     feedback: '',
   });
 
-  const web3 = new Web3(Web3.givenProvider || 'http://localhost:80');
-  // const contractAddress = '0x38596e2fad3ee0cba69d2a1544c3bb023203f29d';
-  const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
+  const [state, setState] = useState({
+    provider:null,
+    signer: null,
+    contractAddress: null
+  })
 
-  const contractInstance = new web3.eth.Contract(contractAbi, contractAddress);
-  const [connectedAccount, setConnectedAccount] = useState('');
-const [connected, setConnected] = useState(false);
+  const [account, setAccount] = useState('Not Connected!')
+  //hardhat address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  //sepolia testnet address: 0x71dfB14665cEC91a3bC6B5ED51F1aE1869Df92a5
+  const contractAddress = '0x71dfB14665cEC91a3bC6B5ED51F1aE1869Df92a5'; // Deployed contract address
+  const { abi } = ContractABI
 
-  //contract address :-0x37B1f8173e3a78dE855619649039A87f6520aE08
+
   const handleContactClick = async () => {
     try {
-      // Ensure all required fields are filled
-      if (!formData.name || !formData.phoneNumber || !formData.email || !formData.subject || !formData.feedback) {
-        alert('Please fill in all fields.');
-        return;
-      }
-      var username = formData.name;
-      var phone_number = formData.phoneNumber;
-      var email = formData.email;
-      var select_a_subject = document.getElementById('subject').value;
-      var feedback = formData.feedback;
-      console.log("name: ",username,"\nphone: ", phone_number,"\nemail: ", email,"\nselect_a_subject: ", select_a_subject,"\nfeedback: ", feedback);
-
-      try {
-        if (window.ethereum) {
-          const web3 = new Web3(window.ethereum);
-          await window.ethereum.request({ method: "eth_requestAccounts" });
-          console.log("Wallet connected");
-          const accounts = await web3.eth.getAccounts();
-          
-          setConnectedAccount(accounts[0]);
-          console.log(connectedAccount);
-          console.log("acounts,",accounts);
-          const result = await contractInstance.methods.storeValues(username, phone_number, email, select_a_subject, feedback).send({
-            from: accounts[0],
-            gas: 2000000, // Adjust gas limit as needed
-            gasPrice: '300000000000', // Adjust gas price as needed
-          });
-    
-          console.log('Transaction result:', result);
+        if (!formData.name || !formData.phoneNumber || !formData.email || !formData.subject || !formData.feedback) {
+            throw new Error('Please fill in all fields.');
         }
-      } catch (error) {
-        console.error("Error connecting wallet:", error);
-      }
+        
+        let signer = null;
+        let provider;
 
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      console.log("Wallet connected");
-      const accounts = await web3.eth.getAccounts();
-      const senderAddress = connectedAccount;
-      const result = await contractInstance.methods.storeValues(username, phone_number, email, select_a_subject, feedback).send({
-      from: accounts[0],
-      gas: 2000000, // Adjust gas limit as needed
-      gasPrice: '30000000000', // Adjust gas price as needed
-      });
+        // for injected providers 
+        if (!window.ethereum) {
+            throw new Error('MetaMask is not installed');
+        }
 
-      console.log('Transaction result:', result);
-      alert('Contact is saved successfully');
+        const accounts = await window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .catch((err) => {
+            if (err.code === 4001) {
+                // EIP-1193 userRejectedRequest error
+                // If this happens, the user rejected the connection request.
+                console.log("Please connect to MetaMask.");
+            } else {
+                console.error(err);
+            }
+        });
+        const account = accounts[2];
+        setAccount(account);
+
+        provider = new ethers.BrowserProvider(window.ethereum) //read the blockchain
+        signer = await provider.getSigner(); //write on the blockchain
+        // console.log(signer);
+
+        const contract = new ethers.Contract(contractAddress, abi, signer)
+        setState(provider, signer, contractAddress);
+        // console.log(contract);
+
+        const _name = formData.name;
+        const phone_number = formData.phoneNumber;
+        const _email = formData.email;
+        const _subject = formData.numericSubject;
+        const _feedback = formData.feedback;
+
+        console.log("Transaction is initiating....");
+        const transaction = await contract.storeValues(
+            _name,
+            phone_number,
+            _email,
+            _subject,
+            _feedback
+        );
+        console.log("Transaction submitted to the network but yet to be finalized..");
+        await transaction.wait();
+
+        console.log('Transaction is a success and added on the Blockchain');
+        alert('Thank you for reaching out to us. We will get back to you ASAP!');
     } catch (error) {
-      console.error('Error:', error.message || error);
-      alert('An error occurred. Please try again.');
+        console.error('Error:', error.message || error);
+        alert('An error occurred. Please try again.');
     }
-  }
+};
 
   const subjects = ["General Inquiry", "Technical Support", "Billing Issue"];
 
-  const handleSubjectChange = (event, value) => {
-    // Update the subject in the form data
-    setFormData(prevData => ({ ...prevData, subject: value }));
+  const handleSubjectChange = (event, newValue) => {
+    let numericValue = -1; // Default value if conversion fails
+  
+    switch(newValue) {
+      case "General Inquiry":
+        numericValue = 0;
+        break;
+      case "Technical Support":
+        numericValue = 1;
+        break;
+      case "Billing Issue":
+        numericValue = 2;
+        break;
+      default:
+        // Handle the case where the selected value is not recognized
+        break;
+    }
+  
+    // Update the form data with the selected value and its numerical representation
+    setFormData(prevData => ({
+      ...formData,
+      subject: newValue,
+      numericSubject: numericValue
+    }));
   };
+  
 
   const handleInputChange = (event) => {
-    // Update the form data based on user input
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
@@ -174,9 +208,9 @@ const [connected, setConnected] = useState(false);
           />
         </Box>
         <Box sx={{ mt: "10px", margin: "20px" }}>
-        <Button  onClick={handleContactClick} variant="contained" fullWidth sx={{ padding: "15px" }}>
-              Contact Us
-        </Button>
+          <Button onClick={handleContactClick} variant="contained" fullWidth sx={{ padding: "15px" }}>
+            Contact Us
+          </Button>
         </Box>
       </Box>
     </Box>
