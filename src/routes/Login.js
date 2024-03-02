@@ -1,57 +1,97 @@
+import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
+import {
+  TextField,
+  Box,
+  Typography,
+  Autocomplete,
+  Button,
+} from "@mui/material";
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+
 const Login = () => {
     return (
         <>
-  <title>Login Form</title>
-  <style
-    dangerouslySetInnerHTML={{
-      __html:
-        "\n        /* Add your CSS styles here to customize the appearance of the form */\n    "
-    }}
-  />
-  <div>
-    <h1>Login</h1>
-    <form>
-      <label htmlFor="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Enter your username"
-        required=""
-      />
-      <br />
-      <br />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Enter your password"
-        required=""
-      />
-      <br />
-      <br />
+
+  
+  <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: "50px",
+        }}
+      >
+        <Box sx={{ width: "50%" }} bgcolor="white">
+          <Typography
+            variant="h4"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              fontWeight: "bold",
+              mt: "20px",
+            }}
+          >
+            Login
+          </Typography>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+            <TextField
+              id="outlined-basic"
+              label="User Name"
+              variant="outlined"
+              fullWidth
+            />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              fullWidth
+            />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+            <Button variant="contained" fullWidth sx={{ padding: "15px" }}>
+              Login
+            </Button>
+          </Box>
+      <Typography align="center">
+
       <a href="#">Forgot Password?</a>
-      <br />
-      <br />
-      <a href="#">Sign Up</a>
-      <br />
-      <br />
-      <p>
+      </Typography>
+      {/* <p>
         Don't have an account? <a href="#">Sign up here</a>
       </p>
-      <br />
-      <button type="submit">Login</button>
-      <button type="button">Back</button>
-      <br />
-      <br />
-      <div>
-        <p>Or sign in with:</p>
-        <button type="button">Sign up with Google</button>
-        <button type="button">Sign up with Facebook</button>
-      </div>
-    </form>
-  </div>
+           */}
+      <Typography align="center">
+        <p>OR Sign In with:</p>
+      </Typography>
+      
+          <Box sx={{ width: '100%',
+          // display: "flex",
+          // justifyContent: "center",
+          p: "20px", }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+              <Grid item xs={6}>
+              <GoogleLoginButton onClick={() => alert("Hello")} />
+              </Grid>
+              <Grid item xs={6}>
+              <FacebookLoginButton onClick={() => alert("Hello")} />
+              </Grid>
+            </Grid>
+          </Box>
+
+        </Box>
+      </Box>
 </>
 
     );

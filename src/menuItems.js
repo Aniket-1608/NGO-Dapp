@@ -53,5 +53,14 @@ export const menuItems = [
         title: 'Login',
         url: '/login',
     },
+    {
+        title:'Manan',
+        url: '/manan',
+    },
+    {
+       title:'MyComponent',
+       url: '/mycomponent',
+    },
+    
     
 ];

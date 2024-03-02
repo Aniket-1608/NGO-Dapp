@@ -39,6 +39,9 @@ const rewards = [
   require('../components/asset/awards/iVolunteer-Awards.jpg'),
 
 ]
+const guides = [
+  require('../components/asset/guide/Shikha_Gupta.jpg') 
+]
 function ActionAreaCard({img,name,division,batch,rollno,year}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -73,6 +76,7 @@ function ActionAreaCard({img,name,division,batch,rollno,year}) {
     </Card>
   );
 }
+
 
 function CardWithImage({head,body,img}) {
   const theme = useTheme();
@@ -198,16 +202,46 @@ const About = () => {
       })
       }
     </Box>
+      <Typography component= "div" variant = "h5" align='center'
+      sx={{marginTop: '100px'}}
+      >
+        Guide
+      </Typography>
+      <Box
+      sx={{
+        display: 'flex',
+        justifyContent:"space-around",
+        flexWrap:"wrap",
+        '& > :not(style)': {
+          m:1,
+          width : 250,
+          height : 250,
+
+        },
+      }}
+      >
+        {
+          guides.map(guide=> {
+            return <Paper elevation={13} >
+              <img src={guide} style={{width:250}}/>
+              <div>
+              <center>Dr. Shikha Gupta</center>
+              </div>
+              
+            </Paper>
+          })
+        }
+      </Box>
     <div id='our-team' style={{width:'100%',margin:'30px 0px'}}>
       <Typography component="div" variant="h5" align='center'>
         Our Team
       </Typography>
-      <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}>
+      <Box sx={{ display: 'flex' , width:'100%', justifyContent:"space-around",flexWrap:'wrap'}}> 
       <ActionAreaCard 
         img={require("../components/asset/Shraddha_Salve.png")} 
         division="A"
         batch="A4"
-        rollno="A762"
+        rollno="B707"
         year="2023-2024"
         name="Shraddha Salve" />
         <ActionAreaCard img={require("../components/asset/Yashika_Kothari.jpg")}
@@ -228,6 +262,7 @@ const About = () => {
         rollno="A704"
         year="2023-2024"
          name="Alahuddin Ali" />
+         
       </Box>
       </div>
       </div>

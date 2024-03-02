@@ -20,9 +20,7 @@ const ContactUs = () => {
   });
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:80');
-  // const contractAddress = '0x38596e2fad3ee0cba69d2a1544c3bb023203f29d';
-  const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
-
+  const contractAddress = '0xbc7e20790528941eb59410fd1e810bf02238c4b9';
   const contractInstance = new web3.eth.Contract(contractAbi, contractAddress);
   const [connectedAccount, setConnectedAccount] = useState('');
 const [connected, setConnected] = useState(false);
@@ -47,18 +45,9 @@ const [connected, setConnected] = useState(false);
           const web3 = new Web3(window.ethereum);
           await window.ethereum.request({ method: "eth_requestAccounts" });
           console.log("Wallet connected");
-          const accounts = await web3.eth.getAccounts();
-          
+          const accounts = await web3.eth.requestAccounts().then(console.log);
           setConnectedAccount(accounts[0]);
           console.log(connectedAccount);
-          console.log("acounts,",accounts);
-          const result = await contractInstance.methods.storeValues(username, phone_number, email, select_a_subject, feedback).send({
-            from: accounts[0],
-            gas: 2000000, // Adjust gas limit as needed
-            gasPrice: '300000000000', // Adjust gas price as needed
-          });
-    
-          console.log('Transaction result:', result);
         }
       } catch (error) {
         console.error("Error connecting wallet:", error);
@@ -69,9 +58,9 @@ const [connected, setConnected] = useState(false);
       const accounts = await web3.eth.getAccounts();
       const senderAddress = connectedAccount;
       const result = await contractInstance.methods.storeValues(username, phone_number, email, select_a_subject, feedback).send({
-      from: accounts[0],
-      gas: 2000000, // Adjust gas limit as needed
-      gasPrice: '30000000000', // Adjust gas price as needed
+        from: accounts[0],
+        gas: 2000000, // Adjust gas limit as needed
+        gasPrice: '30000000000', // Adjust gas price as needed
       });
 
       console.log('Transaction result:', result);

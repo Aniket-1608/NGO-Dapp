@@ -16,7 +16,8 @@ import OurTeam from "../routes/OurTeam";
 import LegalStatusandEmpanelments from "../routes/LegalStatusandEmpanelments";
 import WhatWeDo from "../routes/WhatWeDo";
 import Projects from "../routes/Projects";
-
+import Manan from "../routes/manan";
+import MyComponent from "../routes/MyComponent";
 import Gallery from "../routes/Gallery";
 import ContactUs from "../routes/ContactUs";
 import Donate from "../routes/Donate";
@@ -29,6 +30,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+
 
 
 
@@ -57,6 +59,8 @@ const App = () => {
           <Route path="contactus"element={<ContactUs />} />
           <Route path="donate"element={<Donate />} />
           <Route path="login"element={<Login />} />
+          <Route path="manan"element={<Manan/>} />
+          <Route path="mycomponent"element={<MyComponent/>} />
           <Route path="*" element={<p>Not found!</p>} />
           
         </Route>
