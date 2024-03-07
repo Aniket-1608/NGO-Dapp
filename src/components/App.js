@@ -31,6 +31,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import SignUp from "../routes/SignUp";
+import ForgotPassword from "../routes/ForgotPassword";
 
 
 
@@ -61,6 +63,8 @@ const App = () => {
           <Route path="donate"element={<Donate />} />
           <Route path="faucet"element={<Faucet />} />
           <Route path="login"element={<Login />} />
+          <Route path="forgotpassword"element={<ForgotPassword />} />
+          <Route path="signup"element={<SignUp />} />
           <Route path="manan"element={<Manan/>} />
           <Route path="mycomponent"element={<MyComponent/>} />
           <Route path="*" element={<p>Not found!</p>} />

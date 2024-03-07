@@ -58,6 +58,14 @@ export const menuItems = [
         url: '/login',
     },
     {
+      title: 'Forgot Password',
+      url: '/forgotpassword',
+    },
+    {
+      title: 'SignUp',
+      url: '/signup',
+    },
+    {
         title:'Manan',
         url: '/manan',
     },
