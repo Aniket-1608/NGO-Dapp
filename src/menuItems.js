@@ -50,6 +50,10 @@ export const menuItems = [
         url: '/donate',
     },
     {
+      title: 'Faucet',
+      url: '/faucet',
+    },
+    {
         title: 'Login',
         url: '/login',
     },

@@ -21,6 +21,7 @@ import MyComponent from "../routes/MyComponent";
 import Gallery from "../routes/Gallery";
 import ContactUs from "../routes/ContactUs";
 import Donate from "../routes/Donate";
+import Faucet from "../routes/Faucet";
 import Login from "../routes/Login";
 import Events from "../routes/Events";
 
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="gallery"element={<Gallery />} />
           <Route path="contactus"element={<ContactUs />} />
           <Route path="donate"element={<Donate />} />
+          <Route path="faucet"element={<Faucet />} />
           <Route path="login"element={<Login />} />
           <Route path="manan"element={<Manan/>} />
           <Route path="mycomponent"element={<MyComponent/>} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as ethers from 'ethers';
-import ContractABI from '../artifacts/contracts/contact.sol/ContactABI.json'
+import ContractABI from '../ABIs/ContactABI.json'
 
 import {
   TextField,

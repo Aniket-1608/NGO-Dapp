@@ -8,7 +8,7 @@ async function main() {
   const contact = await Contact.deploy();
 
   await contact.waitForDeployment();
-  console.log(`Contact deployed to: ${contact.target}`);
+  console.log(`Contact contract deployed to: ${contact.target}`);
 }
 
 main()
