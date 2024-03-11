@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { ethers } from 'ethers';
-import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
+import React, { useState, useEffect, createContext } from 'react';
+import { ethers, id } from 'ethers';
+import { FacebookProvider, useLogin } from 'react-facebook';
+// import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
 import {
   TextField,
   Box,
@@ -13,18 +14,13 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+import SignUp from './SignUp';
 
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
+export const recoveryContext = createContext();
 
 const Login = () => {
+  const [user, setUser] = useState({});
   //to save username and password
   const [formData, setFormData] = useState({
     userName: '',
@@ -87,7 +83,7 @@ const Login = () => {
       const eventArgs = eventLog[0].args;
       console.log(eventArgs[1]);
 
-      if(eventArgs[1]== true){
+      if(eventArgs[1] === true){
         console.log('Transaction is a success..');
         alert('Successfully logged in...');
       }
@@ -103,83 +99,8 @@ const Login = () => {
     }
   }
 
-  // const userSignUp = async () => {
-  //   try {
-  //     if(!formData.userName || !formData.password) {
-  //       throw new Error('Please fill in all the fields.');
-  //     }
-
-  //     if(!window.ethereum) {
-  //       throw new Error('Metamask is not Installed');
-  //     }
-      
-  //     const accounts = await window.ethereum
-  //     .request({ method: "eth_requestAccounts" })
-  //       .catch((err) => {
-  //           if (err.code === 4001) {
-  //               // EIP-1193 userRejectedRequest error
-  //               // If this happens, the user rejected the connection request.
-  //               console.log("Please connect to MetaMask.");
-  //           } else {
-  //               console.error(err);
-  //           }
-  //       });
-  //     // const account = accounts[0];
-
-      
-  //     if(state.provider == null){
-  //       state.provider = new ethers.BrowserProvider(window.ethereum);
-  //       state.signer = await (state.provider).getSigner();
-  //     }
-      
-  //     const contract = new ethers.Contract(state.contractAddress, abi, state.signer)
-      
-  //     console.log('Transaction is initiating...');
-  //     const transaction = await contract.registerUser(
-  //       formData.userName,
-  //       formData.password,
-  //     );
-
-  //     console.log('Transaction submitted to the network. Waiting for finalization...');
-  //     const transactionReceipt= await transaction.wait();
-  //     const eventLog = transactionReceipt.logs;
-  //     const eventArgs = eventLog[0].args;
-  //     console.log(eventArgs[1]);
-      
-  //     // Subscribe to events
-  //     // contract.on("UserRegistered", (from, to, value, event)=>{
-  //     //   let UserRegisteredEvent ={
-  //     //       from: from,
-  //     //       to: to,
-  //     //       value: value,
-  //     //       eventData: event,
-  //     //   }
-  //     //   console.log(JSON.stringify(UserRegisteredEvent, null, 4))
-  //     // })
-  //     if(eventArgs[1]== true){
-  //       console.log('Transaction is a success..');
-  //       alert('Successfully logged in...');
-  //     }
-  //     else{
-  //       console.log('Transaction is a failure..');
-  //       console.log('Please fill correct login credentials.');
-  //       alert('Invalid Login Credentials. Please fill correct login credentials.');
-  //     }
-
-  //     console.log('Transaction is a success..');
-  //     console.log('Successfull sign up...');
-  //     alert('Successfull sign up...');
-  //   } catch (error) {
-  //     console.error('Error:', error.message || error);
-  //     alert(`An error occured. User already exists for this account.`);
-  //   }
-  // }
-
-  // const handleForgotPassword = async() => {
-
-  // }
-
   const navigateToSignupPage = async() => {
+    // SignUp();
     navigate('/signup');
   }
 
@@ -191,6 +112,54 @@ const Login = () => {
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
+
+  function handleCallbackResponse(response){
+    console.log("JWT web token:" +response.credential);
+    var userObject = jwtDecode(response.credential);
+    console.log(userObject);
+    setUser(userObject);
+    document.getElementById("logInDiv").hidden = true;
+  }
+  function handleSignOut(event){
+    setUser({});
+    document.getElementById("logInDiv").hidden = false;
+  }
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "801009680059-abg0ikgpj3lm9h4s6rl8gcoipfj0eqci.apps.googleusercontent.com",
+      callback: handleCallbackResponse 
+    })
+
+    google.accounts.id.renderButton(
+      document.getElementById("logInDiv"),
+      {theme:"outline", size:"large"}
+    )
+
+    google.accounts.id.prompt();
+
+    window.fbAsyncInit = function() {
+      window.FB.init({
+        appId            : '783701473655561',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v19.0'
+      });
+    };
+ 
+    (function(d, s, id) {
+      let js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  }, []);
+  const responseFacebook = (response) => {
+    console.log(response);
+  };
     return (
     <>
       <Box
@@ -198,6 +167,7 @@ const Login = () => {
               display: "flex",
               justifyContent: "center",
               mt: "50px",
+              width:"80%"
             }}
           >
             <Box sx={{ width: "50%" }} bgcolor="white">
@@ -268,18 +238,23 @@ const Login = () => {
               <Typography align="center">
                 <p>or Sign in with:</p>
               </Typography>
-              <Box sx={{ width: '100%',
-              // display: "flex",
-              // justifyContent: "center",
-              p: "20px", }}>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                  <Grid item xs={6}>
-                  <GoogleLoginButton onClick={() => alert("Hello")} />
-                  </Grid>
-                  <Grid item xs={6}>
-                  <FacebookLoginButton onClick={() => alert("Hello")} />
-                  </Grid>
-                </Grid>
+              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+                <div id="logInDiv"> </div>
+                {
+                  Object.keys(user).length !== 0 &&
+                  <Button onClick={(e) => handleSignOut(e)}>SIGN OUT</Button>
+                } 
+              </Box> 
+              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+                <div>
+                <FacebookProvider
+                  appId="783701473655561"
+                  autoLoad={false}
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                  scope="ads_read,ads_management"
+                />
+                </div>
               </Box>
             </Box>
           </Box>

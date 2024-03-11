@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { ethers } from 'ethers';
 import {
   TextField,
@@ -9,9 +10,53 @@ import {
 } from "@mui/material";
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
+import { recoveryContext } from './Login';
 
+// export default function Login() {
+//   const { setPage, setOTP, setEmail } = useContext(recoveryContext);
+//   const [userEmail, setUserEmail] = useState(""); 
 
+//   function sendOtp() {
+//     if (userEmail) {
+//       axios.get(`http://localhost:5000/check_email?email=${userEmail}`).then((response) => {
+//         if (response.status === 200) {
+//           const OTP = Math.floor(Math.random() * 9000 + 1000);
+//           console.log(OTP);
+//           setOTP(OTP);
+//           setEmail(userEmail);
 
+//           axios.post("http://localhost:5000/send_email", {
+//             OTP,
+//             recipient_email: userEmail,
+//           })
+//           .then(() => setPage("otp"))
+//           .catch(console.log);
+//         } else {
+//           alert("User with this email does not exist!");
+//           console.log(response.data.message);
+//         }}).catch(console.log);
+//     } else {
+//       alert("Please enter your email");
+//   }}
+//   return (
+//     <div>
+//       <h2>Login</h2>
+
+//       <form>
+//         <label /> Email: 
+//         <input type="email" value={userEmail} onChange={(e) => { setUserEmail(e.target.value) }} />
+
+//         <label /> Password:
+//         <input type="password" />
+
+//         <button type="submit">login</button>
+//       </form>
+//       <a href="#" onClick={() => sendOtp()}>
+//         Forgot Password
+//       </a>
+//     </div>
+//   );
+// }
 const ForgotPassword = () => {
   //to save username and password
   const [formData, setFormData] = useState({

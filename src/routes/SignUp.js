@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import ContractABI from '../ABIs/LoginABI.json'
+import validator from 'validator';
 // import { providers } from 'web3';
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -43,19 +44,33 @@ const SignUp = () => {
 
   const  { abi } = ContractABI
 
+  const validate = (value) => { 
+    if (validator.isStrongPassword(value, { 
+        minLength: 8, minLowercase: 1, 
+        minUppercase: 1, minNumbers: 1, minSymbols: 1 
+    })) { 
+        alert('Strong Password');
+    } else { 
+        alert('Password should contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 special character.');
+        throw new Error('Password is not strong.');
+    } 
+  }
 
-const userSignUp = async () => {
+  const userSignUp = async () => {
     try {
       if(!formData.address || !formData.city || !formData.confirmPassword || !formData.country || !formData.email || 
         !formData.mobile || !formData.name || !formData.newPassword || !formData.userName) {
         throw new Error('Please fill in all the fields.');
       }
 
-      if(formData.newPassword != formData.confirmPassword){
+      if(formData.newPassword !== formData.confirmPassword){
         alert('Password does not match. Please fill the correct passwords.');
         throw new Error('Please fill the correct password.');
       }
-      
+
+      //to check the password validation
+      validate(formData.newPassword);
+
       if((formData.newPassword).length < 8 ){
         alert('Password should contain atleast 8 characters.');
         throw new Error('Password should contain atleast 8 characters.');
@@ -79,10 +94,10 @@ const userSignUp = async () => {
       // const account = accounts[0];
 
       
-      if(state.provider == null){
+      // if(state.provider == null){
         state.provider = new ethers.BrowserProvider(window.ethereum);
         state.signer = await (state.provider).getSigner();
-      }
+      // }
       
       const contract = new ethers.Contract(state.contractAddress, abi, state.signer)
       
@@ -104,17 +119,7 @@ const userSignUp = async () => {
       const eventArgs = eventLog[0].args;
       console.log(eventArgs[1]);
       
-      // Subscribe to events
-      // contract.on("UserRegistered", (from, to, value, event)=>{
-      //   let UserRegisteredEvent ={
-      //       from: from,
-      //       to: to,
-      //       value: value,
-      //       eventData: event,
-      //   }
-      //   console.log(JSON.stringify(UserRegisteredEvent, null, 4))
-      // })
-      if(eventArgs[1]== true){
+      if(eventArgs[1]=== true){
         console.log('Transaction is a success..');
         alert('Successfull sign up...');
         navigate('/login');
