@@ -19,6 +19,7 @@ contract Login {
     event UserRegistered(address userAddress, bool userRegistered);
     event UserAuthenticate(address userAddress, bool isAuthenticate);
     event UserUpdatePassword(address userAddress, bool isupdated);
+    event UserExists(address userAddress, bool isExists);
 
     function registerUser(
         string memory _name,
@@ -47,8 +48,9 @@ contract Login {
         emit UserRegistered(msg.sender, userExists());
     }
 
-    function userExists() internal view returns (bool) {
+    function userExists() public returns (bool) {
         User memory user1 = users[msg.sender];
+        emit UserExists(msg.sender, user1.exists);
         return user1.exists;
     }
 

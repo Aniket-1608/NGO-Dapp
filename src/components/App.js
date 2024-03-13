@@ -23,6 +23,7 @@ import ContactUs from "../routes/ContactUs";
 import Donate from "../routes/Donate";
 import Faucet from "../routes/Faucet";
 import Login from "../routes/Login";
+import Authentication from "../routes/authentication";
 import Events from "../routes/Events";
 
 import * as React from "react";
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="donate"element={<Donate />} />
           <Route path="faucet"element={<Faucet />} />
           <Route path="login"element={<Login />} />
+          <Route path="authentication"element={<Authentication />} />
           <Route path="forgotpassword"element={<ForgotPassword />} />
           <Route path="signup"element={<SignUp />} />
           <Route path="manan"element={<Manan/>} />

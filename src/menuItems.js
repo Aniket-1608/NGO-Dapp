@@ -57,14 +57,14 @@ export const menuItems = [
         title: 'Login',
         url: '/login',
     },
-    {
-      title: 'Forgot Password',
-      url: '/forgotpassword',
-    },
-    {
-      title: 'SignUp',
-      url: '/signup',
-    },
+    // {
+    //   title: 'Forgot Password',
+    //   url: '/forgotpassword',
+    // },
+    // {
+    //   title: 'SignUp',
+    //   url: '/signup',
+    // },
     {
         title:'Manan',
         url: '/manan',

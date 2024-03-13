@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { ethers, id } from 'ethers';
-import { FacebookProvider, useLogin } from 'react-facebook';
-// import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
+import { ethers } from 'ethers';
+import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
 import {
   TextField,
   Box,
@@ -14,12 +13,12 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
-import SignUp from './SignUp';
+
 
 export const recoveryContext = createContext();
 
 const Login = () => {
+  
   const [user, setUser] = useState({});
   //to save username and password
   const [formData, setFormData] = useState({
@@ -31,7 +30,7 @@ const Login = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0xf537B7f5d1e043315A4f0fCbCC4Ac087b229B902", 
+    contractAddress: "0xbc8F308484Ab30Ae2E243F41287cbE65115495C7", 
     contract: null
   });
 
@@ -100,7 +99,6 @@ const Login = () => {
   }
 
   const navigateToSignupPage = async() => {
-    // SignUp();
     navigate('/signup');
   }
 
@@ -113,152 +111,100 @@ const Login = () => {
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  function handleCallbackResponse(response){
-    console.log("JWT web token:" +response.credential);
-    var userObject = jwtDecode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    document.getElementById("logInDiv").hidden = true;
-  }
-  function handleSignOut(event){
-    setUser({});
-    document.getElementById("logInDiv").hidden = false;
-  }
-
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "801009680059-abg0ikgpj3lm9h4s6rl8gcoipfj0eqci.apps.googleusercontent.com",
-      callback: handleCallbackResponse 
-    })
-
-    google.accounts.id.renderButton(
-      document.getElementById("logInDiv"),
-      {theme:"outline", size:"large"}
-    )
-
-    google.accounts.id.prompt();
-
-    window.fbAsyncInit = function() {
-      window.FB.init({
-        appId            : '783701473655561',
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v19.0'
-      });
-    };
- 
-    (function(d, s, id) {
-      let js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-  }, []);
-  const responseFacebook = (response) => {
-    console.log(response);
+  const google = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
   };
+
+  const facebook = () => {
+    window.open("http://localhost:5000/auth/facebook", "_self");
+  };
+
     return (
     <>
       <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mt: "50px",
-              width:"80%"
-            }}
-          >
-            <Box sx={{ width: "50%" }} bgcolor="white">
-              <Typography
-                variant="h4"
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  fontWeight: "bold",
-                  mt: "20px",
-                }}
-              >
-                Login
-              </Typography>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-                <TextField
-                  id="userName"
-                  value={formData.userName}
-                  onChange={handleInputChange}
-                  name="userName"
-                  label="User Name"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                label="Password"          
-                name="password"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-              
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
-                  <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                    <Button onClick={userLogin} variant="contained" color="primary" sx={{ padding: '10px', width: '100%' }}>
-                      Login
-                    </Button>
-                  </Box>
-
-                  <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
-                    <Button onClick={navigateToForgotPasswordPage} variant="text" color="primary" sx={{ padding: '10px', width: '100%' }}>
-                      Forgot Password
-                    </Button>
-                  </Box>
-                </Box>
-
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '80%' }}>
-                  <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                    <Typography align='center' variant='h6' color='primary'>
-                      Don't have an account?
-                    </Typography>
-                  </Box>
-
-                  <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
-                    <Button onClick={navigateToSignupPage} variant="contained" color="primary" sx={{ padding: '10px', pl:"30px", pr: "30px",width: '100%' }}>
-                      Sign Up
-                    </Button>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Typography align="center">
-                <p>or Sign in with:</p>
-              </Typography>
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: "50px",
+        }}
+      >
+      <Box sx={{ width: "50%" }} bgcolor="white">
+        <Typography
+          variant="h4"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            fontWeight: "bold",
+            mt: "20px",
+          }}
+        >
+          Login
+        </Typography>
+        <Box sx={{ mt: "10px", margin: "20px"}}>
+          <TextField
+            id="userName"
+            value={formData.userName}
+            onChange={handleInputChange}
+            name="userName"
+            label="User Name"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px"}}>
+          <TextField
+            id="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            label="Password"          
+            name="password"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>  
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
               <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                <div id="logInDiv"> </div>
-                {
-                  Object.keys(user).length !== 0 &&
-                  <Button onClick={(e) => handleSignOut(e)}>SIGN OUT</Button>
-                } 
-              </Box> 
+                <Button onClick={userLogin} variant="contained" color="primary" sx={{ padding: '10px', width: '100%' }}>
+                  Login
+                </Button>
+              </Box>
+
+              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
+                <Button onClick={navigateToForgotPasswordPage} variant="text" color="primary" sx={{ padding: '10px', width: '100%' }}>
+                  Forgot Password
+                </Button>
+              </Box>
+            </Box>
+
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '80%' }}>
               <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                <div>
-                <FacebookProvider
-                  appId="783701473655561"
-                  autoLoad={false}
-                  fields="name,email,picture"
-                  callback={responseFacebook}
-                  scope="ads_read,ads_management"
-                />
-                </div>
+                <Typography align='center' variant='h6' color='primary'>
+                  Don't have an account?
+                </Typography>
+              </Box>
+
+              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
+                <Button onClick={navigateToSignupPage} variant="contained" color="primary" sx={{ padding: '10px', pl:"30px", pr: "30px",width: '100%' }}>
+                  Sign Up
+                </Button>
               </Box>
             </Box>
           </Box>
+
+          <Typography align="center">
+            <p>or Sign in with:</p>
+          </Typography>
+          <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+            <GoogleLoginButton onClick={google}/>
+          </Box> 
+          <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+              <FacebookLoginButton onClick={facebook}/>
+          </Box>
+        </Box>
+      </Box>
     </>
     );
 };
+
 export default Login;
