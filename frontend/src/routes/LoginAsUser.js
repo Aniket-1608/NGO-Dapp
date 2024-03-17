@@ -15,15 +15,15 @@ import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
 
 
-export const recoveryContext = createContext();
+// export const recoveryContext = createContext();
 
-const Login = () => {
-  
-  const [user, setUser] = useState({});
+const LoginAsUser = () => {
+
   //to save username and password
   const [formData, setFormData] = useState({
     userName: '',
     password: '',
+    userRole: null
   });
 
   const navigate = useNavigate();
@@ -98,14 +98,18 @@ const Login = () => {
     }
   }
 
-  const navigateToSignupPage = async() => {
-    navigate('/signup');
+  const navigateToPage = async(page) => {
+    if(page == 'signup'){
+      navigate('/signup');
+    }
+    else if(page == 'forgotpassword'){
+      navigate('/forgotpassword')
+    }
   }
-
-  const navigateToForgotPasswordPage = async() => {
-    navigate('/forgotpassword');
+  const roles = ["Admin", "Committee", "User", "Government"];
+  const handleRoleChange = (event, value) => {
+    setFormData(prevData => ({ ...prevData, userRole: value }));
   }
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
@@ -138,8 +142,20 @@ const Login = () => {
             mt: "20px",
           }}
         >
-          Login
+          User Login
         </Typography>
+        {/* <Box sx={{ mt: "10px", margin: "20px"}}>
+          <Autocomplete
+            disablePortal
+            id="userrole"
+            options={roles}
+            value={formData.userRole}
+            onChange={handleRoleChange}
+            renderInput={(params) => (
+              <TextField {...params} label="Select a Role" />
+            )}
+          />
+        </Box> */}
         <Box sx={{ mt: "10px", margin: "20px"}}>
           <TextField
             id="userName"
@@ -150,8 +166,8 @@ const Login = () => {
             variant="outlined"
             fullWidth
           />
-          </Box>
-          <Box sx={{ mt: "10px", margin: "20px"}}>
+        </Box>
+        <Box sx={{ mt: "10px", margin: "20px"}}>
           <TextField
             id="password"
             value={formData.password}
@@ -161,50 +177,50 @@ const Login = () => {
             variant="outlined"
             fullWidth
           />
-          </Box>  
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
-              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                <Button onClick={userLogin} variant="contained" color="primary" sx={{ padding: '10px', width: '100%' }}>
-                  Login
-                </Button>
-              </Box>
-
-              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
-                <Button onClick={navigateToForgotPasswordPage} variant="text" color="primary" sx={{ padding: '10px', width: '100%' }}>
-                  Forgot Password
-                </Button>
-              </Box>
+        </Box>  
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
+            <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+              <Button onClick={userLogin} variant="contained" color="primary" sx={{ padding: '10px', width: '100%' }}>
+                Login As User
+              </Button>
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '80%' }}>
-              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-                <Typography align='center' variant='h6' color='primary'>
-                  Don't have an account?
-                </Typography>
-              </Box>
-
-              <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
-                <Button onClick={navigateToSignupPage} variant="contained" color="primary" sx={{ padding: '10px', pl:"30px", pr: "30px",width: '100%' }}>
-                  Sign Up
-                </Button>
-              </Box>
+            <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
+              <Button onClick={() => navigateToPage('forgotpassword')} variant="text" color="primary" sx={{ padding: '10px', width: '100%' }}>
+                Forgot Password
+              </Button>
             </Box>
           </Box>
 
-          <Typography align="center">
-            <p>or Sign in with:</p>
-          </Typography>
-          <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-            <GoogleLoginButton onClick={google}/>
-          </Box> 
-          <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
-              <FacebookLoginButton onClick={facebook}/>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '80%' }}>
+            <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+              <Typography align='center' variant='h6' color='primary'>
+                Don't have an account?
+              </Typography>
+            </Box>
+
+            <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'right' }}>
+              <Button onClick={() => navigateToPage('signup')} variant="contained" color="primary" sx={{ padding: '10px', pl:"30px", pr: "30px",width: '100%' }}>
+                Sign Up
+              </Button>
+            </Box>
           </Box>
         </Box>
+
+        <Typography align="center">
+          <p>or Sign in with:</p>
+        </Typography>
+        <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+          <GoogleLoginButton onClick={google}/>
+        </Box> 
+        <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>
+            <FacebookLoginButton onClick={facebook}/>
+        </Box>
       </Box>
-    </>
-    );
+    </Box>
+  </>
+  );
 };
 
-export default Login;
+export default LoginAsUser;

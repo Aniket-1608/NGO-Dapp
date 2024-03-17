@@ -22,7 +22,10 @@ import Gallery from "../routes/Gallery";
 import ContactUs from "../routes/ContactUs";
 import Donate from "../routes/Donate";
 import Faucet from "../routes/Faucet";
-import Login from "../routes/Login";
+import LoginAsUser from "../routes/LoginAsUser";
+import LoginASAdmin from "../routes/LoginAsAdmin";
+import LoginAsGovernment from "../routes/LoginAsGovernment";
+import LoginAsCommitteeMember from "../routes/LoginAsCommitteeMember";
 import Authentication from "../routes/authentication";
 import Events from "../routes/Events";
 
@@ -63,7 +66,10 @@ const App = () => {
           <Route path="contactus"element={<ContactUs />} />
           <Route path="donate"element={<Donate />} />
           <Route path="faucet"element={<Faucet />} />
-          <Route path="login"element={<Login />} />
+          <Route path="loginasuser"element={<LoginAsUser />} />
+          <Route path="loginasadmin"element={<LoginASAdmin />} />
+          <Route path="loginasgovernment"element={<LoginAsGovernment />} />
+          <Route path="loginascommitteemember"element={<LoginAsCommitteeMember />} />
           <Route path="authentication"element={<Authentication />} />
           <Route path="forgotpassword"element={<ForgotPassword />} />
           <Route path="signup"element={<SignUp />} />

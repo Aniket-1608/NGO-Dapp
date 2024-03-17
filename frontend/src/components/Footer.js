@@ -112,10 +112,10 @@ function Footer() {
               color="#ff0000"
             />
             <List>
-              {menu["QuickLinks"]?.map((item) => {
+              {menu["QuickLinks"]?.map((item, index) => {
                 return (
                   // <Link key={toLink} to={toLink} className={classes.link}>
-                  <Link style={{ textDecoration: "none" }}>
+                  <Link key={index} style={{ textDecoration: "none" }}>
                     <Typography variant="h6" sx={{ pb: "8px" }} color="#6C757D">
                       {item.name}
                     </Typography>
@@ -134,10 +134,10 @@ function Footer() {
               color="#ff0000"
             />
             <List>
-              {menu["OtherLinks"]?.map((item) => {
+              {menu["OtherLinks"]?.map((item, index) => {
                 return (
                   // <Link key={toLink} to={toLink} className={classes.link}>
-                  <Link style={{ textDecoration: "none" }}>
+                  <Link key={index} style={{ textDecoration: "none" }}>
                     <Typography variant="h6" sx={{ pb: "8px" }} color="#6C757D">
                       {item.name}
                     </Typography>
