@@ -2,6 +2,13 @@
 pragma solidity ^0.8.17;
 
 contract Login {
+    enum Role {
+        USER,
+        COMMITTEE_MEMBER,
+        ADMIN,
+        GOVERNMENT
+    }
+
     struct User {
         string Name;
         uint128 Mobile;
@@ -12,6 +19,7 @@ contract Login {
         bytes32 UserName;
         bytes32 Password;
         bool exists;
+        Role role;
     }
 
     mapping(address => User) private users;
@@ -19,6 +27,7 @@ contract Login {
     event UserRegistered(address userAddress, bool userRegistered);
     event UserAuthenticate(address userAddress, bool isAuthenticate);
     event UserUpdatePassword(address userAddress, bool isupdated);
+    event UserRole(address userAddress, Role isUserRole);
     event UserExists(address userAddress, bool isExists);
 
     function registerUser(
@@ -29,7 +38,8 @@ contract Login {
         string memory _email,
         string memory _address,
         string memory _username,
-        string memory _password
+        string memory _password,
+        Role _role
     ) external {
         require(!users[msg.sender].exists, "User already exists");
         bytes32 userName = keccak256(abi.encodePacked(_username));
@@ -43,7 +53,8 @@ contract Login {
             _address,
             userName,
             password,
-            true
+            true,
+            _role
         );
         emit UserRegistered(msg.sender, userExists());
     }
@@ -52,6 +63,11 @@ contract Login {
         User memory user1 = users[msg.sender];
         emit UserExists(msg.sender, user1.exists);
         return user1.exists;
+    }
+
+    function getUserRole() public {
+        require(users[msg.sender].exists, "User does not exists");
+        emit UserRole(msg.sender, users[msg.sender].role);
     }
 
     function updatePassword(string memory newPassword) external {

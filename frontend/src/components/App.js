@@ -37,6 +37,8 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import SignUp from "../routes/SignUp";
 import ForgotPassword from "../routes/ForgotPassword";
+import SidenavUser from "./SidenavUser";
+import SidenavCommittee from "./SidenavCommittee";
 
 
 
@@ -73,6 +75,8 @@ const App = () => {
           <Route path="authentication"element={<Authentication />} />
           <Route path="forgotpassword"element={<ForgotPassword />} />
           <Route path="signup"element={<SignUp />} />
+          <Route path="sidenavuser" element={<SidenavUser />} />
+          <Route path="sidenavcommittee" element={<SidenavCommittee />} />
           <Route path="manan"element={<Manan/>} />
           <Route path="mycomponent"element={<MyComponent/>} />
           <Route path="*" element={<p>Not found!</p>} />

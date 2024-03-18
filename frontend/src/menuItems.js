@@ -42,12 +42,12 @@ export const menuItems = [
       url: '/events',
   },
   {
-      title: 'Contact Us',
-      url:'/contactus',
-  },
-  {
       title: 'Donate',
       url: '/donate',
+  },
+  {
+    title: 'Contact Us',
+    url:'/contactus',
   },
   {
     title: 'Faucet',
@@ -101,31 +101,69 @@ export const menuItems = [
      
 ];
 
-export const menuItemsAdmin = [
+export const menuItemsUser = [
   {
-    title: 'Home', 
-    url: '/'
+    title: 'Home',
+    url: '/',
   },
   {
     title: 'About Us',
-    url: '/about'
+    url: '/about',
+    submenu: [
+      {
+        title: 'Overview',
+        url: '#overview',
+      },
+      {
+        title: 'Vision and Mission',
+        url: '#vision-and-mission',
+      },
+      {
+        title: 'Milestones and Rewards',
+        url: '#milestones-and-rewards',
+      },
+      {
+        title: 'Our Team',
+        url:'#our-team'
+      },
+      {
+        title:'Legal Status & Empanelments',
+        url:'#legal-status-and-empanelments'
+      },
+    ],
   },
   {
-    title: 'Projects',
-    url: '/projects'
+      title: 'What we do',
+      url : '/whatwedo',
   },
   {
-    title: 'Send Approval',
-    url: '/send-approval'
+      title: 'View Projects',
+      url: '/projects',
   },
   {
-    title: 'View Donations',
-    url: '/view-donations'
+      title: 'Events',
+      url: '/events',
   },
   {
-    title: 'Accept Proposals',
-    url: '/accept-proposals'
-  }
+      title: 'Donate',
+      url: '/donate',
+  },
+  {
+    title: 'Contact Us',
+    url:'/contactus',
+  },
+  {
+    title: 'User Enroll as Member',
+    url: '/loginasuser',
+  },
+  {
+    title: 'Gallery',
+    url: '/gallery',
+  },
+  {
+    title: 'Sidebar',
+    url: '/sidenavuser',
+  },
 ];
 
 export const menuItemsCommittee = [
@@ -138,23 +176,99 @@ export const menuItemsCommittee = [
     url: '/about'
   },
   {
-    title: 'Propose Idea',
+    title: 'Propose Idea for Project',
     url: '/propose-idea'
-  },
-  {
-    title: 'Create Event',
-    url: '/create-event'
-  },
-  {
-    title: 'View Donations',
-    url: '/view-donations'
   },
   {
     title: 'Mining Pool',
     url: '/mining-pool'
   },
   {
+    title: 'View Donations',
+    url: '/view-donations'
+  },
+  {
     title: 'Attend Meetings',
     url: '/attend-meetings'
+  },
+  {
+    title: 'Gallery',
+    url: '/gallery'
+  },
+  {
+    title: 'Sidebar',
+    url: '/sidenavcommittee'
+  }
+];
+
+export const menuItemsAdmin = [
+  {
+    title: 'Home', 
+    url: '/'
+  },
+  {
+    title: 'About Us',
+    url: '/about'
+  },
+  {
+    title: 'Accept Approval',
+    url: '/accept-approval'
+  },
+  {
+    title: 'Generate Project Report',
+    url: '/projects'
+  },
+  {
+    title: 'View Donations',
+    url: '/view-donations'
+  },
+  {
+    title: 'RAFT Algorithm',
+    url: '/raft-algorithm'
+  },
+  {
+    title: 'Sidebar',
+    url: '/sidenav',
+  }
+];
+
+export const menuItemsGovernment = [
+  {
+    title: 'Home',
+    url: '/',
+  },
+  {
+    title: 'About Us',
+    url: '/about',
+    submenu: [
+      {
+        title: 'Overview',
+        url: '#overview',
+      },
+      {
+        title: 'Vision and Mission',
+        url: '#vision-and-mission',
+      },
+      {
+        title: 'Milestones and Rewards',
+        url: '#milestones-and-rewards',
+      },
+      {
+        title: 'Our Team',
+        url:'#our-team'
+      },
+      {
+        title:'Legal Status & Empanelments',
+        url:'#legal-status-and-empanelments'
+      },
+    ],
+  },
+  {
+      title: 'View Annual Reports',
+      url : '/annualreports',
+  },
+  {
+    title: 'Sidebar',
+    url: '/sidenav',
   }
 ];

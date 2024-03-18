@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import {
   TextField,
   Box,
+  Autocomplete,
   Typography,
   Button,
 } from "@mui/material";
@@ -31,7 +32,9 @@ const SignUp = () => {
     email: '',
     userName: '',
     newPassword: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    userRole: null,
+    numericUserRole: -1,
   });
 
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ const SignUp = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0xbc8F308484Ab30Ae2E243F41287cbE65115495C7"
+    contractAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
   });
 
   const  { abi } = ContractABI
@@ -59,7 +62,7 @@ const SignUp = () => {
   const userSignUp = async () => {
     try {
       if(!formData.address || !formData.city || !formData.confirmPassword || !formData.country || !formData.email || 
-        !formData.mobile || !formData.name || !formData.newPassword || !formData.userName) {
+        !formData.mobile || !formData.name || !formData.newPassword || !formData.userName || !formData.userRole) {
         throw new Error('Please fill in all the fields.');
       }
 
@@ -93,15 +96,16 @@ const SignUp = () => {
         });
       // const account = accounts[0];
 
-      
       // if(state.provider == null){
         state.provider = new ethers.BrowserProvider(window.ethereum);
         state.signer = await (state.provider).getSigner();
       // }
       
       const contract = new ethers.Contract(state.contractAddress, abi, state.signer)
-      
+      // const _role= formData.numericUserRole;
+
       console.log('Transaction is initiating...');
+      console.log(`Numeric value: ${formData.numericUserRole}`)
       const transaction = await contract.registerUser(
         formData.name,
         formData.mobile,
@@ -110,19 +114,33 @@ const SignUp = () => {
         formData.email,
         formData.address,
         formData.userName,
-        formData.newPassword
+        formData.newPassword,
+        formData.numericUserRole
       );
 
       console.log('Transaction submitted to the network. Waiting for finalization...');
       const transactionReceipt= await transaction.wait();
+      console.log(transactionReceipt);
       const eventLog = transactionReceipt.logs;
+      console.log(eventLog);
       const eventArgs = eventLog[0].args;
+      console.log(eventArgs);
       console.log(eventArgs[1]);
       
       if(eventArgs[1]=== true){
         console.log('Transaction is a success..');
         alert('Successfull sign up...');
-        navigate('/login');
+        const _role = formData.userRole;
+        if( _role === "User"){
+          navigate('/loginasuser');
+        } else if (_role === "Committee Member") {
+          navigate('/loginascommitteemember');
+        } else if (_role === "Admin") {
+          navigate('/loginasadmin');
+        } else {
+          navigate('/loginasgovernment');
+        }
+        
       }
       else{
         console.log('Transaction is a failure..');
@@ -134,6 +152,35 @@ const SignUp = () => {
       alert(`An error occured.`);
     }
   }
+
+  const roles = [ "User", "Committee Member", "Admin", "Government"];
+  const handleRoleChange = (event, value) => {
+    let numericValue = -1 // Default value if conversion fails
+
+    switch(value){
+      case "User":
+        numericValue = 0;
+        break;
+      case "Committee Member":
+        numericValue = 1;
+        break;
+      case "Admin":
+        numericValue = 2;
+        break;
+      case "Government":
+        numericValue = 3;
+        break;
+      default:
+        // Handle the case where the selected value is not recognized
+        break;
+    }
+    setFormData(prevData => ({ 
+      ...formData, 
+      userRole: value,
+      numericUserRole: numericValue 
+      }));
+  }
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
@@ -202,6 +249,18 @@ const SignUp = () => {
                 variant="outlined"
                 // fullWidth
               />
+              </Box>
+              <Box sx={{ mt: "10px", margin: "20px"}}>
+                <Autocomplete
+                  disablePortal
+                  id="userrole"
+                  options={roles}
+                  value={formData.userRole}
+                  onChange={handleRoleChange}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Select a Role" />
+                  )}
+                />
               </Box>
               <Box sx={{ mt: "10px", margin: "20px" }}>
               <TextField

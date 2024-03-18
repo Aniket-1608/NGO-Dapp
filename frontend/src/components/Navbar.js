@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { menuItems, menuItemsAdmin, menuItemsCommittee} from '../menuItems';
+import { menuItems, menuItemsAdmin, menuItemsCommittee, menuItemsGovernment, menuItemsUser} from '../menuItems';
 import MenuItems from './MenuItems';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -12,11 +12,17 @@ const Navbar = () => {
 
   useEffect(() => {
     // Update navItems based on the current route
-    if (location.pathname === '/loginasadmin') {
-      setNavItems(menuItemsAdmin);
+    if (location.pathname === '/loginasuser') {
+      setNavItems(menuItemsUser);
     }
     else if(location.pathname === '/loginascommitteemember') {
       setNavItems(menuItemsCommittee)
+    } 
+    else if (location.pathname === '/loginasadmin') {
+      setNavItems(menuItemsAdmin);
+    }
+    else if(location.pathname === '/loginasgovernment') {
+      setNavItems(menuItemsGovernment)
     } else {
       setNavItems(menuItems);
     }

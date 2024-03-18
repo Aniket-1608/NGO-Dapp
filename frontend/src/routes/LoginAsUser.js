@@ -8,11 +8,12 @@ import {
   Autocomplete,
   Button,
 } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
+import Checkbox from './Checkbox';
 
 
 // export const recoveryContext = createContext();
@@ -30,7 +31,7 @@ const LoginAsUser = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0xbc8F308484Ab30Ae2E243F41287cbE65115495C7", 
+    contractAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3", 
     contract: null
   });
 
@@ -106,10 +107,10 @@ const LoginAsUser = () => {
       navigate('/forgotpassword')
     }
   }
-  const roles = ["Admin", "Committee", "User", "Government"];
-  const handleRoleChange = (event, value) => {
-    setFormData(prevData => ({ ...prevData, userRole: value }));
-  }
+  // const roles = ["Admin", "Committee", "User", "Government"];
+  // const handleRoleChange = (event, value) => {
+  //   setFormData(prevData => ({ ...prevData, userRole: value }));
+  // }
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
@@ -177,7 +178,10 @@ const LoginAsUser = () => {
             variant="outlined"
             fullWidth
           />
-        </Box>  
+        </Box> 
+        <Box sx={{ mt: "10px", margin: "20px"}}>
+          <Checkbox label= "Do you want to Login as a User?" />
+        </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
             <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>

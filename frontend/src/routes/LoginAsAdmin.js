@@ -29,7 +29,7 @@ const LoginASAdmin = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0xbc8F308484Ab30Ae2E243F41287cbE65115495C7", 
+    contractAddress: "0xC239eC34918A6074657A84FdebCff0a2188a6787", 
     contract: null
   });
 
