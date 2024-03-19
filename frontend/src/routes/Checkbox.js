@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContractABI from "../ABIs/LoginABI.json";
 import { ethers } from "ethers";
 
 const Checkbox = ({label}) => {
     const [isChecked, setIsChecked] = useState(false);
-    const [state, setState] = useState({
-        provider:null,
-        signer: null,
-        contractAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3", //hardhat contract address
-        contract: null
-      });
     
     const  { abi } = ContractABI
-    const handleOnChange = () => {
-        setIsChecked((prev) => !prev);
-        if (!isChecked) {
-            getUserRole(); // Call getUserRole when checkbox is checked
-        }
-    }
+
     const getUserRole = async () => {
         try {
           if(!window.ethereum) {
@@ -34,32 +23,42 @@ const Checkbox = ({label}) => {
                 }
             });
           
-          if(state.provider == null){
-            state.provider = new ethers.BrowserProvider(window.ethereum);
-            state.signer = await (state.provider).getSigner();
-          }
+          const contractAddress = "0x27e7D78dae4A496b1f352747080D325260346FAc";
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          
+          const contract = new ethers.Contract(contractAddress, abi, signer);
+          console.log('Transaction is initiating...');
     
-          if(state.contract == null){
-            state.contract = new ethers.Contract(state.contractAddress, abi, state.signer)
-            console.log('Transaction is initiating...');
-          }
-    
-          const transaction = await (state.contract).getUserRole();
-    
+          const transaction = await contract.getUserRole();
           console.log('Transaction submitted to the network. Waiting for finalization...');
+          
           const transactionReceipt= await transaction.wait();
           const eventLog = transactionReceipt.logs;
-          console.log(eventLog);
+          // console.log(eventLog);
+          
           const eventArgs = eventLog[0].args;
-          console.log(eventArgs);
+          // console.log(eventArgs);
           console.log(eventArgs[1]);
-    
-          if(eventArgs[1] != "0n"){
-            console.log("Transaction is a failure..");
-            alert("Role is not User. Please check your role.");
-          } else {
+
+          const result = eventArgs[1].toString();
+          console.log(result);
+
+          if(result === "0"){
             console.log("Transaction is a success..");
-            alert("Role is correct.");
+            alert("Role is user.");
+          }
+          else if(result === "1"){
+            console.log("Transaction is a success..");
+            alert("Role is committee member.");
+          }
+          else if(result === "2"){
+            console.log("Transaction is a success..");
+            alert("Role is Admin.");
+          }
+          else {
+            console.log("Transaction is a success..");
+            alert("Role is government.");
           }
     
         } catch (error) {
@@ -67,9 +66,14 @@ const Checkbox = ({label}) => {
           alert('An error occured. Please try again.');
         }
     }
-    useEffect(() => {
-        console.log(isChecked ? "Selected" : "Not Selected");
-    }, [isChecked]);
+
+    const handleOnChange = () => {
+      setIsChecked((prev) => !prev);
+      if (!isChecked) {
+          getUserRole(); // Call getUserRole when checkbox is checked
+      }
+    }
+
     return(
         <div className="checkbox-wrapper">
             <label>

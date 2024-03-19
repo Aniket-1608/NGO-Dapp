@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
-
+import Checkbox from './Checkbox';
 
 // export const recoveryContext = createContext();
 
@@ -27,7 +27,7 @@ const LoginAsCommitteeMember = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0xC239eC34918A6074657A84FdebCff0a2188a6787", 
+    contractAddress: "0x27e7D78dae4A496b1f352747080D325260346FAc", 
     contract: null
   });
 
@@ -175,6 +175,11 @@ const LoginAsCommitteeMember = () => {
             fullWidth
           />
         </Box>  
+        {formData.userName !== '' && formData.password !== '' && ( // Conditionally render the checkbox
+          <Box sx={{ mt: "10px", margin: "20px"}}>
+            <Checkbox label="Do you want to Login as a User?" />
+          </Box>
+        )}
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
             <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>

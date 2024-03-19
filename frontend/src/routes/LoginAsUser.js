@@ -31,7 +31,7 @@ const LoginAsUser = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3", 
+    contractAddress: "0x27e7D78dae4A496b1f352747080D325260346FAc", 
     contract: null
   });
 
@@ -179,9 +179,11 @@ const LoginAsUser = () => {
             fullWidth
           />
         </Box> 
-        <Box sx={{ mt: "10px", margin: "20px"}}>
-          <Checkbox label= "Do you want to Login as a User?" />
-        </Box>
+        {formData.userName !== '' && formData.password !== '' && ( // Conditionally render the checkbox
+          <Box sx={{ mt: "10px", margin: "20px"}}>
+            <Checkbox label="Do you want to Login as a User?" />
+          </Box>
+        )}
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ display: 'inside', justifyContent: 'space-between', width: '80%' }}>
             <Box sx={{ mt: '10px', margin: '20px', justifyContent: 'center' }}>

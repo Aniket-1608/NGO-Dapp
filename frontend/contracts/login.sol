@@ -65,9 +65,11 @@ contract Login {
         return user1.exists;
     }
 
-    function getUserRole() public {
-        require(users[msg.sender].exists, "User does not exists");
-        emit UserRole(msg.sender, users[msg.sender].role);
+    function getUserRole() public returns (bool) {
+        User memory user1 = users[msg.sender];
+        require(user1.exists, "User does not exists");
+        emit UserRole(msg.sender, user1.role);
+        return true;
     }
 
     function updatePassword(string memory newPassword) external {

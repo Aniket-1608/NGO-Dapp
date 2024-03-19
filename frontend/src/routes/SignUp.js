@@ -42,7 +42,7 @@ const SignUp = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    contractAddress: "0x27e7D78dae4A496b1f352747080D325260346FAc"
   });
 
   const  { abi } = ContractABI
