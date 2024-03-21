@@ -1,13 +1,23 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import Dropdown from './Dropdown';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { MyContext } from './MyContext';
+// import { MyContext } from './MyContext';
 
 
 const MenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
+  const {loginStatus, setLoginStatus} = useContext(MyContext);
 
   let ref = useRef();
+
+  const handleItemsTitle= (title) => {
+    if (title === 'Log In') {
+      return (!loginStatus ? 'Log In' : 'Log Out');
+    }
+    else return (title);
+  }
 
   useEffect(() => {
     const handler = (event) => {

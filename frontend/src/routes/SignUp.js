@@ -96,10 +96,8 @@ const SignUp = () => {
         });
       // const account = accounts[0];
 
-      // if(state.provider == null){
         state.provider = new ethers.BrowserProvider(window.ethereum);
         state.signer = await (state.provider).getSigner();
-      // }
       
       const contract = new ethers.Contract(state.contractAddress, abi, state.signer)
       // const _role= formData.numericUserRole;
@@ -188,142 +186,142 @@ const SignUp = () => {
     return (
     <>
       <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: "50px",
+        }}
+        >
+        <Box sx={{ width: "50%" }} bgcolor="white">
+          <Typography
+            variant="h4"
             sx={{
               display: "flex",
               justifyContent: "center",
-              mt: "50px",
+              fontWeight: "bold",
+              mt: "20px",
             }}
           >
-            <Box sx={{ width: "50%" }} bgcolor="white">
-              <Typography
-                variant="h4"
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  fontWeight: "bold",
-                  mt: "20px",
-                }}
-              >
-                Sign Up
-              </Typography>
-              <Box sx={{ mt: "10px", margin: "20px" , display: "inline-flex", justifyContent: "left"}}>
-                <TextField
-                  id="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  name="name"
-                  label="Name"
-                  variant="outlined"
-                //   fullWidth
-                />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "right"}}>
-              <TextField
-                id="mobile"
-                value={formData.mobile}
-                onChange={handleInputChange}
-                label="Mobile Number"          
-                name="mobile"
-                variant="outlined"
-                // fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "left" }}>
-              <TextField
-                id="country"
-                value={formData.country}
-                onChange={handleInputChange}
-                label="Country"          
-                name="country"
-                variant="outlined"
-                // fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "right" }}>
-              <TextField
-                id="city"
-                value={formData.city}
-                onChange={handleInputChange}
-                label="City"          
-                name="city"
-                variant="outlined"
-                // fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px"}}>
-                <Autocomplete
-                  disablePortal
-                  id="userrole"
-                  options={roles}
-                  value={formData.userRole}
-                  onChange={handleRoleChange}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Select a Role" />
-                  )}
-                />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                label="Email"          
-                name="email"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="address"
-                value={formData.address}
-                onChange={handleInputChange}
-                label="Address"          
-                name="address"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="userName"
-                value={formData.userName}
-                onChange={handleInputChange}
-                label="User Name"          
-                name="userName"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="newPassword"
-                value={formData.newPassword}
-                onChange={handleInputChange}
-                label="New Password"          
-                name="newPassword"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-              <Box sx={{ mt: "10px", margin: "20px" }}>
-              <TextField
-                id="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                label="Confirm Password"          
-                name="confirmPassword"
-                variant="outlined"
-                fullWidth
-              />
-              </Box>
-                <Box sx={{ mt: "10px", margin: "20px" }}>
-                <Button onClick={userSignUp} variant="contained" fullWidth sx={{ padding: "15px" }}>
-                  Sign up
-                </Button>
-                </Box>
-            </Box>
+            Sign Up
+          </Typography>
+          <Box sx={{ mt: "10px", margin: "20px" , display: "inline-flex", justifyContent: "left"}}>
+            <TextField
+              id="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              name="name"
+              label="Name"
+              variant="outlined"
+            //   fullWidth
+            />
           </Box>
+          <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "right"}}>
+          <TextField
+            id="mobile"
+            value={formData.mobile}
+            onChange={handleInputChange}
+            label="Mobile Number"          
+            name="mobile"
+            variant="outlined"
+            // fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "left" }}>
+          <TextField
+            id="country"
+            value={formData.country}
+            onChange={handleInputChange}
+            label="Country"          
+            name="country"
+            variant="outlined"
+            // fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px", display: "inline-flex", justifyContent: "right" }}>
+          <TextField
+            id="city"
+            value={formData.city}
+            onChange={handleInputChange}
+            label="City"          
+            name="city"
+            variant="outlined"
+            // fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px"}}>
+            <Autocomplete
+              disablePortal
+              id="userrole"
+              options={roles}
+              value={formData.userRole}
+              onChange={handleRoleChange}
+              renderInput={(params) => (
+                <TextField {...params} label="Select a Role" />
+              )}
+            />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+          <TextField
+            id="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            label="Email"          
+            name="email"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+          <TextField
+            id="address"
+            value={formData.address}
+            onChange={handleInputChange}
+            label="Address"          
+            name="address"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+          <TextField
+            id="userName"
+            value={formData.userName}
+            onChange={handleInputChange}
+            label="User Name"          
+            name="userName"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+          <TextField
+            id="newPassword"
+            value={formData.newPassword}
+            onChange={handleInputChange}
+            label="New Password"          
+            name="newPassword"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+          <Box sx={{ mt: "10px", margin: "20px" }}>
+          <TextField
+            id="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            label="Confirm Password"          
+            name="confirmPassword"
+            variant="outlined"
+            fullWidth
+          />
+          </Box>
+            <Box sx={{ mt: "10px", margin: "20px" }}>
+            <Button onClick={userSignUp} variant="contained" fullWidth sx={{ padding: "15px" }}>
+              Sign up
+            </Button>
+            </Box>
+        </Box>
+      </Box>
     </>
     );
 };

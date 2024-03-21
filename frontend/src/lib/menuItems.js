@@ -154,7 +154,7 @@ export const menuItemsUser = [
   },
   {
     title: 'User Enroll as Member',
-    url: '/loginasuser',
+    url: '/userenroll',
   },
   {
     title: 'Gallery',
@@ -164,6 +164,10 @@ export const menuItemsUser = [
     title: 'Sidebar',
     url: '/sidenavuser',
   },
+    // {
+    //   title: 'Log In',
+    //   url: '/loginasuser',
+    // },
 ];
 
 export const menuItemsCommittee = [
@@ -177,19 +181,19 @@ export const menuItemsCommittee = [
   },
   {
     title: 'Propose Idea for Project',
-    url: '/propose-idea'
+    url: '/proposeidea'
   },
   {
     title: 'Mining Pool',
-    url: '/mining-pool'
+    url: '/miningpool'
   },
   {
     title: 'View Donations',
-    url: '/view-donations'
+    url: '/viewdonations'
   },
   {
     title: 'Attend Meetings',
-    url: '/attend-meetings'
+    url: '/attendmeetings'
   },
   {
     title: 'Gallery',
@@ -212,11 +216,11 @@ export const menuItemsAdmin = [
   },
   {
     title: 'Accept Approval',
-    url: '/accept-approval'
+    url: '/acceptapproval'
   },
   {
     title: 'Generate Project Report',
-    url: '/projects'
+    url: '/generateprojectreport'
   },
   {
     title: 'View Donations',
@@ -224,7 +228,7 @@ export const menuItemsAdmin = [
   },
   {
     title: 'RAFT Algorithm',
-    url: '/raft-algorithm'
+    url: '/raftalgorithm'
   },
   {
     title: 'Sidebar',
@@ -265,7 +269,7 @@ export const menuItemsGovernment = [
   },
   {
       title: 'View Annual Reports',
-      url : '/annualreports',
+      url : '/viewannualreports',
   },
   {
     title: 'Sidebar',

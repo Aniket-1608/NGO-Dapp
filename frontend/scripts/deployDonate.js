@@ -4,7 +4,7 @@ async function main() {
   // Hardhat always runs scripts in the context of the current network
   const Donate = await ethers.getContractFactory("Donate");
 
-  console.log("Deploying Contact...");
+  console.log("Deploying Contract...");
   const donate = await Donate.deploy();
 
   await donate.waitForDeployment();

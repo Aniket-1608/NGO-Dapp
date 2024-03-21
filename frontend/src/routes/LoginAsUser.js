@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { ethers } from 'ethers';
 import { FacebookLoginButton,GoogleLoginButton } from "react-social-login-buttons";
 import {
@@ -13,7 +13,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import ContractABI from '../ABIs/LoginABI.json';
 import { useNavigate } from 'react-router-dom';
+import SidenavUser from '../components/SidenavUser';
 import Checkbox from './Checkbox';
+import { MyContext } from '../components/MyContext';
 
 
 // export const recoveryContext = createContext();
@@ -28,6 +30,7 @@ const LoginAsUser = () => {
   });
 
   const navigate = useNavigate();
+  const {loginStatus, setLoginStatus} = useContext(MyContext);
   const [state, setState] = useState({
     provider:null,
     signer: null,
@@ -86,6 +89,8 @@ const LoginAsUser = () => {
       if(eventArgs[1] === true){
         console.log('Transaction is a success..');
         alert('Successfully logged in...');
+        setLoginStatus(true);
+        navigate('/sidenavuser')
       }
       else{
         console.log('Transaction is a failure..');
@@ -125,7 +130,8 @@ const LoginAsUser = () => {
   };
 
     return (
-    <>
+      <>
+      {loginStatus ? <SidenavUser /> :
       <Box
         sx={{
           display: "flex",
@@ -225,6 +231,7 @@ const LoginAsUser = () => {
         </Box>
       </Box>
     </Box>
+    }
   </>
   );
 };

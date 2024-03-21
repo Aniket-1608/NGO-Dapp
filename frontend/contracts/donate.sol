@@ -14,7 +14,7 @@ contract Donate {
     mapping(uint256 => Details) public donateEntries;
     uint256 public entryCount;
 
-    event EntryStored(uint256 indexed entryId);
+    event EntryStored(uint256 indexed entryId, Details hasDonated);
 
     function storeValues(
         string memory _full_name,
@@ -25,7 +25,7 @@ contract Donate {
         uint128 _phone_number
     ) public {
         uint256 entryId = entryCount;
-        donateEntries[entryId] = Details(
+        Details memory donation = Details(
             _full_name,
             _amount,
             _local_address,
@@ -33,8 +33,9 @@ contract Donate {
             _email,
             _phone_number
         );
+        donateEntries[entryId] = donation;
         entryCount++;
-        emit EntryStored(entryId);
+        emit EntryStored(entryId, donation);
     }
 
     function getValues(

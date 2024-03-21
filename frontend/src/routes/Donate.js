@@ -26,7 +26,7 @@ const  Donate = () => {
   const [state, setState] = useState({
     provider:null,
     signer: null,
-    contractAddress: '0x8C529D98B9eF61056e1e8cBc8698a5D91154bAEe'
+    contractAddress: '0x3C45A122a2a9c6b57b1482bBc11b4dDcf78E19Fd'
   })
   const navigate = useNavigate();
 
@@ -91,7 +91,7 @@ const  Donate = () => {
 
         console.log('Transfer is initiating...');
         const txTransferAmount = await (state.signer).sendTransaction({
-          to: "0x7cE38a157E3FF7DD562E31D3a8D21B656d67cce8",
+          to: "0x4DfAa76ca8CAAFA071BE5E543f967429070FeCdE",
           value: weiAmount
         });
 
