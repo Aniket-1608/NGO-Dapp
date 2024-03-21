@@ -236,10 +236,15 @@ const GenerateProjectReport = () => {
                     fullWidth
                   />
                   </Box>
-                  
                     <Box sx={{ mt: "10px", margin: "20px" }}>
-                        <Button variant="contained" fullWidth sx={{ padding: "15px" }}>
-                            Submit
+                        <Button variant="contained" sx={{ padding: "15px", width:"30%" , mr:"30px"}}>
+                            Create Bar Graphs
+                        </Button>
+                        <Button variant="contained" fullWidth sx={{ padding: "15px", width:"30%" , mr:"30px"}}>
+                            Generate Report
+                        </Button>
+                        <Button variant="contained" fullWidth sx={{ padding: "15px", width:"30%", mr:"30px"}}>
+                            Create Pie Charts
                         </Button>
                     </Box>
                 </Box>

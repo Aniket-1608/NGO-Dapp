@@ -231,6 +231,10 @@ export const menuItemsAdmin = [
     url: '/raftalgorithm'
   },
   {
+    title: 'Gallery',
+    url: '/gallery'
+  },
+  {
     title: 'Sidebar',
     url: '/sidenav',
   }
@@ -270,6 +274,10 @@ export const menuItemsGovernment = [
   {
       title: 'View Annual Reports',
       url : '/viewannualreports',
+  },
+  {
+    title: 'Gallery',
+    url: '/gallery'
   },
   {
     title: 'Sidebar',
